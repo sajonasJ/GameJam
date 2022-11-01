@@ -1,15 +1,29 @@
 "use strict"
+let squareSprite;
 function setup() {
-  createCanvas(600, 800);
+  createCanvas(1280, 720);
+  squareSprite = createSprite(500,500,50,50)
+squareSprite.setCollider("rectangle", 0, 0, 50, 50)
 }
 
 function draw() {
-  image(jamtacular, 0, 0);
-  fill(250*sin(red), 255, 0,180);
-  circle(circleX, 600, 60);
-  circleX += circleBounce;
-  if (circleX > width - 30 || circleX < 30) {
-    circleBounce = circleBounce * -1
+background(255)
+keyPressed()
+fill("red")
+rect(1800, 300, 50, 50)
+camera.position.x = squareSprite.position.x
+camera.position.y = squareSprite.position.y
+
+drawSprites()
+}
+
+
+function keyPressed(){
+  if(keyCode == RIGHT_ARROW){
+    squareSprite.setSpeed(4,0)
+  }else if(keyCode == LEFT_ARROW){
+   squareSprite.setSpeed(4,180)
+  }else{
+  squareSprite.setSpeed(0)
   }
-red+=.5;
 }
