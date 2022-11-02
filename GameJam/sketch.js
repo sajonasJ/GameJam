@@ -128,6 +128,7 @@ function keyPressed() {
 //LOGIC
   if (up || w) {
     squareSprite.velocity.y = -3;
+    squareSprite.changeAnimation("running")
   }else if (left || a) {
     squareSprite.velocity.x = -5;
     squareSprite.changeAnimation("runningLeft")
@@ -136,6 +137,7 @@ function keyPressed() {
     squareSprite.changeAnimation("running")
   }else if (down || s) {
     squareSprite.velocity.y = 3;
+    squareSprite.changeAnimation("running")
   }else{
     squareSprite.changeAnimation("idle")
   }
