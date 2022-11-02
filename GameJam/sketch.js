@@ -13,16 +13,32 @@ function setup() {
 }
 
 function draw() {
-  background(0)
-  keyPressed()
-  fill("red")
-  rect(1800, 300, 50, 50)
+  drawScreens();
+}
 
-  fill("red")
-  rect(4000, 300, 50, 50)
+function screenChanger(){
+  if (49){
 
-  camera.position.x = squareSprite.position.x
-  camera.position.y = squareSprite.position.y
+  }
+}
+
+
+
+function drawMainMenu() {
+  background()
+}
+
+function drawGamePlay() {
+  background(0);
+  keyPressed();
+  fill("red");
+  rect(1800, 300, 50, 50);
+
+  fill("red");
+  rect(4000, 300, 50, 50);
+
+  camera.position.x = squareSprite.position.x;
+  camera.position.y = squareSprite.position.y;
 
   let edge = 1280;
   fill('green');
@@ -32,10 +48,9 @@ function draw() {
   fill('yellow');
   rect(edge * 2, 360, edge, 360);//stage3
   fill('lightblue');
-  rect(0, 0, edge*3, 360);//stage3
+  rect(0, 0, edge * 3, 360);//stage3
 
-
-  drawSprites()
+  drawSprites();
 }
 
 // function keyPressed() {
@@ -70,7 +85,19 @@ function keyPressed() {
   if (down || s) {
     squareSprite.velocity.y = 3;
   }
-  // else {
-  //   squareSprite.friction = .07;
-  // }
+}
+
+
+function drawSettings() {
+  background();
+}
+function drawCredits() {
+  background();
+}
+
+function drawLose() {
+  background();
+}
+function drawWin() {
+  background();
 }
