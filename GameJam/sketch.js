@@ -1,5 +1,6 @@
 "use strict"
 let squareSprite;
+let playButton, creditsButton, settingsButton;
 
 function preload(){
   
@@ -10,6 +11,7 @@ function setup() {
   squareSprite = createSprite(640, 360, 50, 50)
   squareSprite.setCollider("rectangle", 0, 0, 50, 50)
   squareSprite.friction = 0.15;
+  buttonManager();
 }
 
 function draw() {
@@ -25,10 +27,19 @@ function screenChanger(){
 
 
 function drawMainMenu() {
-  background()
+  background(155);
+  playButton.show()
+  creditsButton.show()
+  settingsButton.show()
+  creditsButton.mousePressed(viewCredits);
+  playButton.mousePressed(viewGame);
+  settingsButton.mousePressed(viewSettings);
+  
+
 }
 
 function drawGamePlay() {
+  hideMainMenuButtons();
   background(0);
   keyPressed();
   fill("red");
@@ -89,15 +100,51 @@ function keyPressed() {
 
 
 function drawSettings() {
-  background();
+  background("yellow");
+  hideMainMenuButtons();
 }
 function drawCredits() {
-  background();
+  background("green");
+  hideMainMenuButtons();
 }
 
 function drawLose() {
-  background();
+  background(155);
 }
 function drawWin() {
-  background();
+  background(155);
+}
+
+function buttonManager(){
+    playButton = createButton("PLAY")
+    playButton.position(width/2 -50, 300)
+    playButton.size(100,50)
+    playButton.hide()
+    creditsButton = createButton("CREDITS")
+    creditsButton.position(width/2 -50, 400)
+    creditsButton.size(100,50)
+    creditsButton.hide()
+    settingsButton = createButton("SETTINGS")
+    settingsButton.position(width/2 -50, 500)
+    settingsButton.size(100,50)
+    settingsButton.hide()
+    
+}
+
+
+
+function viewCredits(){
+  currentState = CREDITS
+}
+function viewGame(){
+  currentState = GAME_PLAY
+}
+function viewSettings(){
+  currentState = SETTINGS
+}
+
+function hideMainMenuButtons(){
+  playButton.hide()
+  creditsButton.hide()
+  settingsButton.hide()
 }

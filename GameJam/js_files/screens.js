@@ -5,21 +5,21 @@ const CREDITS = 3;
 const LOSE = 4;
 const WIN = 5;
 
-let currentState = GAME_PLAY;
+let currentState = MAIN_MENU;
 
 function drawScreens() {
-
-  if (currentState = MAIN_MENU) {
+ 
+  if (currentState == MAIN_MENU) {
     drawMainMenu();
-  } else if (currentState = GAME_PLAY) {
+  } else if (currentState == GAME_PLAY) {
     drawGamePlay();
-  } else if (currentState = SETTINGS) {
+  } else if (currentState == SETTINGS) {
     drawSettings();
-  } else if (currentState = CREDITS) {
+  } else if (currentState == CREDITS) {
     drawCredits();
-  } else if (currentState = LOSE) {
+  } else if (currentState == LOSE) {
     drawLose();
-  } else if (currentState = WIN) {
+  } else if (currentState == WIN) {
     drawWin();
   }
 }
