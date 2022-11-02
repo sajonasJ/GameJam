@@ -10,6 +10,7 @@ var idleAnim;
 var runningLeftSpriteSheet;
 var runningLeftAnim;
 let squareSprite;
+let background1;
 
 function preload(){
   runningSpriteSheet = loadSpriteSheet("assets/images/running1400.png",100, 100, 6)
@@ -18,7 +19,7 @@ function preload(){
   runningLeftAnim = loadAnimation(runningLeftSpriteSheet)
   idleSpriteSheet = loadSpriteSheet("assets/images/idle1400.png", 100, 100, 7)
   idleAnim = loadAnimation(idleSpriteSheet)
-  //background1 = loadImage("assets/images/background1.png")
+  background1 = loadImage("assets/images/background1.png")
 }
 
 function setup() {
@@ -53,27 +54,13 @@ function drawGamePlay() {
 
   camera.position.x = squareSprite.position.x;//CAMERA CONTROL X
   camera.position.y = squareSprite.position.y;//CAMERA CONTROL Y
-
+camera.zoom = 1.5
   ////////////////////////TEMP BCKGRND////////////////////////
   let edge = 1280;
   
   background(0);
   keyPressed();
-  //image(background1, 0, 0, edge, 720)
-  fill("red");
-  rect(1800, 300, 50, 50);//box
-  fill("red");
-  rect(4000, 300, 50, 50);//box
-  fill('green');
-  rect(0, 360, edge, 360);//stage1
-  fill('gray');
-  rect(edge, 360, edge, 360);//stage2
-  fill('yellow');
-  rect(edge * 2, 360, edge, 360);//stage3
-  fill('lightblue');
-  rect(0, 0, edge * 3, 360);//stage3
-  ////////////////////////TEMP BCKGRND////////////////////////
- 
+  image(background1, 0, 0, 3840, 0);
   drawSprites();
 }
 
@@ -94,42 +81,15 @@ function drawWin() {
   background(155);
 }
 ////////////////////////CONTROL BUTTONS////////////////////////
-function keyPressed() {
-  let up = keyDown(UP_ARROW);
-  let down = keyDown(DOWN_ARROW);
-  let left = keyDown(LEFT_ARROW);
-  let right = keyDown(RIGHT_ARROW);
-  let w = keyDown('w');
-  let a = keyDown('a');
-  let s = keyDown('s');
-  let d = keyDown('d');
 
-  if (up || w) {
-    squareSprite.velocity.y = -3;
-  }else if (left || a) {
-    squareSprite.velocity.x = -5;
-    squareSprite.changeAnimation("runningLeft")
-  }else if (right || d) {
-    squareSprite.velocity.x = 5;
-    squareSprite.changeAnimation("running")
-  }else if (down || s) {
-    squareSprite.velocity.y = 3;
-  }else{
-    squareSprite.changeAnimation("idle")
-  }
-}
 function keyPressed() {
-  let up = keyDown(UP_ARROW);
-  let down = keyDown(DOWN_ARROW);
-  let left = keyDown(LEFT_ARROW);
-  let right = keyDown(RIGHT_ARROW);
-  let w = keyDown('w');
-  let a = keyDown('a');
-  let s = keyDown('s');
-  let d = keyDown('d');
+  let up = keyDown(UP_ARROW),w = keyDown('w');
+  let down = keyDown(DOWN_ARROW),a = keyDown('a');
+  let left = keyDown(LEFT_ARROW),s = keyDown('s')
+  let right = keyDown(RIGHT_ARROW),d = keyDown('d');
 //LOGIC
   if (up || w) {
-    squareSprite.velocity.y = -3;
+    squareSprite.velocity.y = -5;
     squareSprite.changeAnimation("running")
   }else if (left || a) {
     squareSprite.velocity.x = -5;
@@ -138,7 +98,7 @@ function keyPressed() {
     squareSprite.velocity.x = 5;
     squareSprite.changeAnimation("running")
   }else if (down || s) {
-    squareSprite.velocity.y = 3;
+    squareSprite.velocity.y = 5;
     squareSprite.changeAnimation("running")
   }else{
     squareSprite.changeAnimation("idle")

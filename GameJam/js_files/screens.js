@@ -5,7 +5,7 @@ const CREDITS = 3;
 const LOSE = 4;
 const WIN = 5;
 
-let currentState = MAIN_MENU;
+let currentState = GAME_PLAY;
 
 function drawScreens() {
  
