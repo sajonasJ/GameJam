@@ -18,6 +18,7 @@ function preload(){
   runningLeftAnim = loadAnimation(runningLeftSpriteSheet)
   idleSpriteSheet = loadSpriteSheet("assets/images/idle1400.png", 100, 100, 7)
   idleAnim = loadAnimation(idleSpriteSheet)
+  //background1 = loadImage("assets/images/background1.png")
 }
 
 function setup() {
@@ -58,6 +59,7 @@ function drawGamePlay() {
   
   background(0);
   keyPressed();
+  //image(background1, 0, 0, edge, 720)
   fill("red");
   rect(1800, 300, 50, 50);//box
   fill("red");
