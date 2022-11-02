@@ -1,6 +1,6 @@
 "use strict"
 ////////////////////////VARIABLES////////////////////////
-let playButton, creditsButton, settingsButton,returnButton;
+let playButton, creditsButton, settingsButton, returnButton, settingsIcon, font, mainMenuBG, playButtonIMG, creditsButtonIMG;
 
 ////////////////////////IMAGE ANIMATION VARIABLES////////////////////////
 var runningSpriteSheet;
@@ -15,11 +15,19 @@ let background1;
 function preload(){
   runningSpriteSheet = loadSpriteSheet("assets/images/running1400.png",100, 100, 6)
   runningAnim = loadAnimation(runningSpriteSheet)
+  runningAnim.frameDelay = 4;
   runningLeftSpriteSheet = loadSpriteSheet("assets/images/running1400left.png.png",100, 100, 6)
   runningLeftAnim = loadAnimation(runningLeftSpriteSheet)
+  runningLeftAnim.frameDelay = 4;
   idleSpriteSheet = loadSpriteSheet("assets/images/idle1400.png", 100, 100, 7)
   idleAnim = loadAnimation(idleSpriteSheet)
+  idleAnim.frameDelay = 12;
   background1 = loadImage("assets/images/background1.png")
+  font = loadFont("fonts/joystix monospace.ttf")
+  mainMenuBG = loadImage("assets/images/mainMenuBG.png")
+  playButtonIMG = loadImage("assets/images/playbutton.png.png")
+  creditsButtonIMG = loadImage("assets/images/creditsButton.png")
+  
 }
 
 function setup() {
@@ -39,6 +47,7 @@ function draw() {
 ////////////////////////DRAWSCREEN CONTROL////////////////////////
 function drawMainMenu() {
   background(155);
+  image(mainMenuBG, 0,0)
   showMainMenuButtons();
   returnButton.hide();
   creditsButton.mousePressed(viewCredits);
@@ -107,22 +116,21 @@ function keyPressed() {
 
 ////////////////////////CREATE BUTTONS////////////////////////
 function buttonManager(){
-    playButton = createButton("PLAY")
-    playButton.position(width/2 -50, 300)
-    playButton.size(100,50)
-    playButton.hide()
-    creditsButton = createButton("CREDITS")
-    creditsButton.position(width/2 -50, 400)
-    creditsButton.size(100,50)
-    creditsButton.hide()
-    settingsButton = createButton("SETTINGS")
-    settingsButton.position(width/2 -50, 500)
-    settingsButton.size(100,50)
-    settingsButton.hide()
+    
+    creditsButton = createImg("assets/images/creditsButton.png")
+    creditsButton.position(950,150)
+    
     returnButton = createButton("RETURN")
     returnButton.position(width/2 -50, 500)
     returnButton.size(100,50)
     returnButton.hide()
+
+    settingsButton = createImg("assets/images/settingsCog.png")
+    settingsButton.position(50,50)
+
+    playButton = createImg("assets/images/playButton.png.png")
+    playButton.position(950, 50)
+    
 }
 
 function showMainMenuButtons(){
