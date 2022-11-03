@@ -9,7 +9,7 @@ var idleSpriteSheet;
 var idleAnim;
 var runningLeftSpriteSheet;
 var runningLeftAnim;
-let squareSprite;
+let player;
 let background1;
 
 function preload(){
@@ -27,17 +27,16 @@ function preload(){
   mainMenuBG = loadImage("assets/images/mainMenuBG.png")
   playButtonIMG = loadImage("assets/images/playbutton.png.png")
   creditsButtonIMG = loadImage("assets/images/creditsButton.png")
-  
 }
 
 function setup() {
   createCanvas(1280, 720);
-  squareSprite = createSprite(640, 360, 50, 50)
-  squareSprite.setCollider("rectangle", 0, 0, 50, 50)
-  squareSprite.addAnimation("running", runningAnim)
-  squareSprite.addAnimation("idle", idleAnim)
-  squareSprite.addAnimation("runningLeft", runningLeftAnim)
-  squareSprite.friction = 0.15;
+  player = createSprite(640, 360, 50, 50)
+  player.setCollider("rectangle", 0, 0, 50, 50)
+  player.addAnimation("running", runningAnim)
+  player.addAnimation("idle", idleAnim)
+  player.addAnimation("runningLeft", runningLeftAnim)
+  player.friction = 0.15;
   buttonManager();
 }
 
@@ -61,8 +60,8 @@ function drawGamePlay() {
   returnButton.hide();
 
 
-  camera.position.x = squareSprite.position.x;//CAMERA CONTROL X
-  camera.position.y = squareSprite.position.y;//CAMERA CONTROL Y
+  camera.position.x = player.position.x;//CAMERA CONTROL X
+  camera.position.y = player.position.y;//CAMERA CONTROL Y
 camera.zoom = 1.5
   ////////////////////////TEMP BCKGRND////////////////////////
   let edge = 1280;
@@ -98,19 +97,19 @@ function keyPressed() {
   let right = keyDown(RIGHT_ARROW),d = keyDown('d');
 //LOGIC
   if (up || w) {
-    squareSprite.velocity.y = -5;
-    squareSprite.changeAnimation("running")
+    player.velocity.y = -5;
+    player.changeAnimation("running")
   }else if (left || a) {
-    squareSprite.velocity.x = -5;
-    squareSprite.changeAnimation("runningLeft")
+    player.velocity.x = -5;
+    player.changeAnimation("runningLeft")
   }else if (right || d) {
-    squareSprite.velocity.x = 5;
-    squareSprite.changeAnimation("running")
+    player.velocity.x = 5;
+    player.changeAnimation("running")
   }else if (down || s) {
-    squareSprite.velocity.y = 5;
-    squareSprite.changeAnimation("running")
+    player.velocity.y = 5;
+    player.changeAnimation("running")
   }else{
-    squareSprite.changeAnimation("idle")
+    player.changeAnimation("idle")
   }
 }
 
