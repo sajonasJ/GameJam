@@ -1,8 +1,6 @@
 class PlayerManager {
     constructor() {
         this.sprite;
-        this.x=300;
-        this.y=460;
     }
     preload() {//preload
         runningSpriteSheet = loadSpriteSheet("assets/images/player/running1400.png", 100, 100, 6)
@@ -17,18 +15,20 @@ class PlayerManager {
         pAttackSprite = loadSpriteSheet("assets/images/player/playerAttack.png", 100, 100, 4)
         pAttack = loadAnimation(pAttackSprite);
         pAttack.frameDelay = 4;
-        transform=loadSpriteSheet("assets/images/player/rage.png", 100, 100, 14)
-        rage=loadAnimation(transform)
-        rageSpr1=loadSpriteSheet("assets/images/player/rage1.png", 80, 100, 6)//o
-        rage1=loadAnimation(rageSpr1)
-        rageSpr2=loadSpriteSheet("assets/images/player/rage2.png", 80, 100, 6)//i
-        rage2=loadAnimation(rageSpr2)
+        transform = loadSpriteSheet("assets/images/player/rage.png", 100, 100, 14)
+        rage = loadAnimation(transform)
+        rageSpr1 = loadSpriteSheet("assets/images/player/rage1.png", 80, 100, 6)//o
+        rage1 = loadAnimation(rageSpr1)
+        rageSpr2 = loadSpriteSheet("assets/images/player/rage2.png", 80, 100, 6)//i
+        rage2 = loadAnimation(rageSpr2)
         rage.frameDelay = 12;
         rage1.frameDelay = 4;
         rage2.frameDelay = 4;
     }
 
-    setup() {// going to run at setup
+    setup(x, y) {// going to run at setup
+        this.x = x;
+        this.y = y;
         this.sprite = this.makePlayer(this.x, this.y);
     }
 
@@ -36,6 +36,8 @@ class PlayerManager {
         camera.position.x = this.sprite.position.x;//CAMERA CONTROL X
         camera.position.y = this.sprite.position.y;//CAMERA CONTROL Y
         camera.zoom = 1;
+        fill('green');
+        rect(this.sprite.position.x, this.sprite.position.y,1000,1000);
     }
 
     makePlayer(x, y) { // createsprite
@@ -58,7 +60,7 @@ class PlayerManager {
         let left = keyDown(LEFT_ARROW), s = keyDown('s')
         let right = keyDown(RIGHT_ARROW), d = keyDown('d');
         let space = keyDown(32);
-        let p = keyDown(80), o = keyDown(79),i=keyDown(73);
+        let p = keyDown(80), o = keyDown(79), i = keyDown(73);
         //LOGIC
         if (left || a) {
             this.sprite.velocity.x = -5;
@@ -80,13 +82,13 @@ class PlayerManager {
         } else {
             this.sprite.changeAnimation("idle")
         }
-        if (p){
+        if (p) {
             this.sprite.changeAnimation("transform")
         }
-        if (o){
+        if (o) {
             this.sprite.changeAnimation("transform1")
         }
-        if (i){
+        if (i) {
             this.sprite.changeAnimation("transform2")
         }
     }

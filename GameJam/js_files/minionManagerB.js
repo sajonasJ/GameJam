@@ -2,8 +2,6 @@ let enemyWalkSheetB, enemyAnimB;
 class MinionManagerB {
     constructor() {
         this.sprite;
-        this.x=1000;
-        this.y=560;
     }
 
     preload() {
@@ -12,7 +10,9 @@ class MinionManagerB {
         enemyAnimB.frameDelay = 4;
     }
 
-    setup() {
+    setup(x,y) {
+        this.x=x;
+        this.y=y;
         this.sprite = this.makeMinionB(this.x, this.y);
     }
 

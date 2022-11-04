@@ -1,8 +1,6 @@
 let enemyWalkSheetA, enemyAnimA;
 class MinionManagerA {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
+    constructor() {
         this.sprite;
     }
 
@@ -12,8 +10,10 @@ class MinionManagerA {
         enemyAnimA.frameDelay = 4;
     }
 
-    setup() {
-        this.sprite = this.makeMinionA(this.x ,this.y);
+    setup(x,y) {
+        this.x=x;
+        this.y=y;
+        this.sprite = this.makeMinionA(this.x, this.y);
     }
 
     draw() {

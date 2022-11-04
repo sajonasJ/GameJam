@@ -19,39 +19,50 @@ let volumeSlider;
 let levelSlider;
 let creditBackground;
 let settingBackground;
-//why nothing
 ////////////////////////Class VARIABLES////////////////////////
 let player = new PlayerManager();
-let enemyA = new MinionManagerA(700, 500);
-let enemyB = new MinionManagerB();
-let enemyA1 = new MinionManagerA(700, 600);
-// let enemyA = [];
+let enemyA = [];
+let enemyB = [];
+for (let i = 0; i < 3; i++) {//green
+  enemyA[i] = new MinionManagerA();
+}
+for (let i = 0; i < 3; i++) {//blue
+  enemyB[i] = new MinionManagerB();
+}
 ////////////////////////BACKGROUND VARIABLES////////////////////////
 
 function preload() {
   background1 = loadImage("assets/images/background1.png");
   player.preload();
-  enemyA.preload();
-  enemyB.preload();
   font = loadFont("fonts/joystix monospace.ttf");
   mainMenuBG = loadImage("assets/images/mainMenuBG.png");
   playButtonIMG = loadImage("assets/images/playbutton.png.png");
   creditsButtonIMG = loadImage("assets/images/creditsButton.png");
   creditBackground = loadImage("assets/images/creditBackground.jpg");
   settingBackground = loadImage("assets/images/settingBackground.png");
+  for (let i = 0; i < 3; i++) {
+    enemyA[i].preload();
+  }
+  for (let i = 0; i < 3; i++) {
+    enemyB[i].preload();
+  }
 }
 
 function setup() {
   createCanvas(1280, 720);
-  player.setup();
-  enemyA.setup(200, 500);
-  enemyB.setup();
-  enemyA1.setup();
+  player.setup(100, 600);
   buttonManager();
   sliderManager();
-  // for (let i=0; i<2; i++){
-  //   enemy[i]
-  // }
+  for (let i = 0; i < 3; i++) {//green
+    let y = 400 + 60 * i;
+    let x = 1000 + 30 * i;
+    enemyA[i].setup(x, y);
+  }
+  for (let i = 0; i < 3; i++) {//blue
+    let y = 500 + 50 * i;
+    let x = 1000 + 1000 * i;
+    enemyB[i].setup(x, y);
+  }
 }
 
 function draw() {
@@ -70,39 +81,58 @@ function drawMainMenu() {
   volumeSlider.hide();
   levelSlider.hide();
 }
-
 function drawGamePlay() {
   hideMainMenuButtons();
   returnButton.hide();
   player.draw();
-  enemyA.draw();
-  enemyB.draw();
-  enemyA1.draw();
   volumeSlider.hide();
   levelSlider.hide();
 
+
+
+  for (let i = 0; i < 3; i++) {//enemy1
+    enemyA[i].draw();
+  }
+
+  for (let i = 0; i < 3; i++) {//enemy2
+    enemyB[i].draw();
+  }
   ////////////////////////TEMP BCKGRND////////////////////////
 
   background(0);
   player.keyPressed();
   image(background1, 0, 0, 3840, 0);
-  createHealthBar();
   spriteWalls();
-  // for (let closingIn of enemyA.Group) {
+  // for (let closingIn of enemyA.Group) { NOT YET GROUPED
   //   closingIn.attractionPoint(2, player.position.x, player.position.y);
   // }
+  
+  createHealthBar();
   drawSprites();
 
 }
 
 function createHealthBar() {//healthbar && health spawner
+
+  fill(214, 204, 194);
+  rectMode(CENTER);
+  rect(camera.position.x, camera.position.y + 250, 1300, 250);
+
+  let healthBoxX= 480, healthBoxY=175;
   noStroke();
   fill(255, 0, 0);
-  rect(20, 770, map(health, 0, maxHealth, 0, 200), 15);//health=0 to max=100 length 200;red
+  rect(camera.position.x - healthBoxX, camera.position.y + healthBoxY, map(health, 0, maxHealth, 0, 200), 15);//health=0 to max=100 length 200;red
   stroke(0);
   strokeWeight(4);
   noFill();
-  rect(20, 770, 200, 15);//rectbox
+  rect(camera.position.x - healthBoxX, camera.position.y + healthBoxY, 200, 15);//rectbox
+
+  let textOffSetX=480, textOffsetY=155;
+  fill(0);
+  strokeWeight(1);
+  textSize(24);
+  textAlign(RIGHT);
+  text("HEALTH:", camera.position.x - textOffSetX, camera.position.y + textOffsetY);
 }
 
 function drawSettings() {
