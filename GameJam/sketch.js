@@ -20,8 +20,9 @@ let levelSlider;
 //why nothing
 ////////////////////////Class VARIABLES////////////////////////
 let player = new PlayerManager();
-let enemyA = new MinionManagerA(200,400);
-let enemyB = new MinionManagerB(400,200);
+let enemyA = new MinionManagerA();
+let enemyB = new MinionManagerB();
+let enemyA1= new MinionManagerA();
 ////////////////////////BACKGROUND VARIABLES////////////////////////
 
 function preload() {
@@ -38,8 +39,9 @@ function preload() {
 function setup() {
   createCanvas(1280, 720);
   player.setup();
-  enemyA.setup();
-  enemyB.setup()
+  enemyA.setup(200,500);
+  enemyB.setup();
+  enemyA1.setup();
   buttonManager();
   sliderManager();
 }
@@ -68,7 +70,9 @@ function drawGamePlay() {
   player.draw();
   enemyA.draw();
   enemyB.draw();
-  console.log(frameCount);
+  enemyA1.draw();
+  volumeSlider.hide();
+  levelSlider.hide();
 
   ////////////////////////TEMP BCKGRND////////////////////////
 

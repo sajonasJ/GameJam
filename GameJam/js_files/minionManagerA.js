@@ -2,8 +2,8 @@ let enemyWalkSheetA, enemyAnimA;
 class MinionManagerA {
     constructor() {
         this.sprite;
-        this.x=1000;
-        this.y=460;
+        this.x=800;
+        this.y=600;
     }
 
     preload() {
@@ -13,7 +13,10 @@ class MinionManagerA {
     }
 
     setup() {
-        this.sprite = this.makeMinionA(this.x, this.y);     
+        this.sprite = this.makeMinionA(
+            this.x + random(-100, 100),
+            this.y + random(-100, 100)
+        )
     }
 
     draw() {
