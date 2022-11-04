@@ -17,6 +17,7 @@ let rage2, rageSpr2;
 let background1;
 let volumeSlider;
 let levelSlider;
+//why nothing
 ////////////////////////Class VARIABLES////////////////////////
 let player = new PlayerManager();
 let enemyA = new MinionManagerA(200,400);
