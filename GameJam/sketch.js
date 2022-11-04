@@ -39,6 +39,7 @@ function preload() {
   creditsButtonIMG = loadImage("assets/images/creditsButton.png");
   creditBackground = loadImage("assets/images/creditBackground.jpg");
   settingBackground = loadImage("assets/images/settingBackground.png");
+  
 }
 
 function setup() {
@@ -105,38 +106,8 @@ function createHealthBar() {//healthbar && health spawner
   rect(20, 770, 200, 15);//rectbox
 }
 
-function drawSettings() {
-  //background("yellow");
-  image(settingBackground, 0, 0)
-  noStroke();
-  fill("white")
-  rect(220, 150, 300, 150, 30);
-  rect(720, 150, 400, 150, 30);
-  fill("gray");
-  textSize(30);
-  textFont(font);
-  text("volume", 300, 210);
-  text("difficulty", 800, 210);
-  textSize(15);
-  text("low", 260, 280);
-  text("high", 430, 280);
-  text("easy", 740, 280);
-  text("normal", 890, 280);
-  text("hard", 1060, 280);
-  hideMainMenuButtons();
-  returnButton.show();
-  volumeSlider.show();
-  levelSlider.show();
-}
-function drawCredits() {
-  image(creditBackground, 0, 0);
-  fill(255, 200);
-  noStroke();
-  rect(200, 100, 880, 550, 30);
 
-  hideMainMenuButtons();
-  returnButton.show();
-}
+
 function drawLose() {
   background(155);
 }
@@ -153,10 +124,11 @@ function buttonManager() {
   creditsButton = createImg("assets/images/creditsButton.png")
   creditsButton.position(950, 150)
 
-  returnButton = createButton("RETURN")
-  returnButton.position(width / 2 - 50, 500)
-  returnButton.size(100, 50)
-  returnButton.hide()
+ 
+  returnButton = createImg("assets/images/returnbutton.png")
+  returnButton.position(1120, 40);
+  returnButton.size(100, 100);
+  returnButton.hide();
 
   settingsButton = createImg("assets/images/settingsCog.png")
   settingsButton.position(50, 50)
@@ -164,17 +136,7 @@ function buttonManager() {
   playButton = createImg("assets/images/playButton.png.png")
   playButton.position(950, 50)
 }
-function sliderManager() {
-  volumeSlider = createSlider(0, 100, 0);
-  volumeSlider.position(270, 230);
-  volumeSlider.style("width", "200px");
-  //volumeSlider.mousePressed(sliderPressed)
 
-  levelSlider = createSlider(0, 2, 0);
-  levelSlider.position(750, 230);
-  levelSlider.style("width", "350px");
-  //volumeSlider.mousePressed(sliderPressed)
-}
 
 function showMainMenuButtons() {
   playButton.show()
