@@ -15,7 +15,9 @@ let transform, rage;
 let rage1, rageSpr1;
 let rage2, rageSpr2;
 let background1;
-////////////////////////GROUP VARIABLES////////////////////////
+let volumeSlider;
+let levelSlider;
+////////////////////////Class VARIABLES////////////////////////
 let player = new PlayerManager();
 let enemyA = new MinionManagerA(200,400);
 let enemyB = new MinionManagerB(400,200);
@@ -30,9 +32,6 @@ function preload() {
   mainMenuBG = loadImage("assets/images/mainMenuBG.png")
   playButtonIMG = loadImage("assets/images/playbutton.png.png")
   creditsButtonIMG = loadImage("assets/images/creditsButton.png")
-  settingBackground = loadImage("assets/images/settingbackground.png")
-  returnButtonIMG = loadImage("assets/images/returnButtonIMG.png")
-  creditBackground = loadImage("assets/images/creditbackground.jpg")
 }
 
 function setup() {
@@ -95,33 +94,27 @@ function createHealthBar() {//healthbar && health spawner
 }
 
 function drawSettings() {
-  //background("yellow");
-  image(settingBackground,0,0)
-  noStroke();
-  fill("white")
-  rect(220,150,300,150,30);
-  rect(720,150,400,150,30);
-  fill("gray");
-  textSize(30);
-  textFont(font);
-  text("volume",300,210);
-  text("difficulty",800,210);
-  textSize(15);
-  text("low", 260,280);
-  text("high", 430,280);
-  text("easy", 740,280);
-  text("normal", 890,280);
-  text("hard", 1060,280);
-  hideMainMenuButtons();
-  returnButton.show();
-  volumeSlider.show();
-  levelSlider.show();
-  
-
-  
-
-
-  
+   //background("yellow");
+   image(settingBackground,0,0)
+   noStroke();
+   fill("white")
+   rect(220,150,300,150,30);
+   rect(720,150,400,150,30);
+   fill("gray");
+   textSize(30);
+   textFont(font);
+   text("volume",300,210);
+   text("difficulty",800,210);
+   textSize(15);
+   text("low", 260,280);
+   text("high", 430,280);
+   text("easy", 740,280);
+   text("normal", 890,280);
+   text("hard", 1060,280);
+   hideMainMenuButtons();
+   returnButton.show();
+   volumeSlider.show();
+   levelSlider.show();
 }
 function drawCredits() {
   image(creditBackground,0,0);
@@ -143,16 +136,7 @@ function drawWin() {
 
 
 ////////////////////////CREATE BUTTONS////////////////////////
-function buttonManager(){
-    
-    creditsButton = createImg("assets/images/creditsButton.png")
-    creditsButton.position(950,150)
-    
-    returnButton = createImg("assets/images/returnButtonIMG.png")
-    returnButton.position(1100, 50)
-    returnButton.size(80,80)
-    returnButton.hide()
-    
+function buttonManager() {
 
   creditsButton = createImg("assets/images/creditsButton.png")
   creditsButton.position(950, 150)
@@ -168,7 +152,6 @@ function buttonManager(){
   playButton = createImg("assets/images/playButton.png.png")
   playButton.position(950, 50)
 }
-
 function sliderManager(){
  
 
@@ -185,7 +168,7 @@ function sliderManager(){
 
 }
 
-function showMainMenuButtons(){
+function showMainMenuButtons() {
   playButton.show()
   creditsButton.show()
   settingsButton.show()
