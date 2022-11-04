@@ -2,6 +2,8 @@ let enemyWalkSheetA, enemyAnimA;
 class MinionManagerA {
     constructor() {
         this.sprite;
+        this.x=1000;
+        this.y=460;
     }
 
     preload() {
@@ -11,15 +13,15 @@ class MinionManagerA {
     }
 
     setup() {
-        this.sprite = this.makeMinionA(1000, 460, 50, 50);     
+        this.sprite = this.makeMinionA(this.x, this.y);     
     }
 
     draw() {
         this.sprite.setSpeed(1.5, 180);
     }
 
-    makeMinionA(x, y, sizeX, sizeY) {
-        let minionA = createSprite(x, y, sizeX, sizeY);
+    makeMinionA(x, y) {
+        let minionA = createSprite(x, y, 50, 50);
         minionA.setCollider("rectangle", 0, 0, 50, 50);
         minionA.addAnimation("walk", enemyAnimA);
         minionA.friction = 0.25;

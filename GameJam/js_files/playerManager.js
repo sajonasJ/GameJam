@@ -1,6 +1,8 @@
 class PlayerManager {
     constructor() {
         this.sprite;
+        this.x=300;
+        this.y=460;
     }
     preload() {//preload
         runningSpriteSheet = loadSpriteSheet("assets/images/player/running1400.png", 100, 100, 6)
@@ -27,7 +29,7 @@ class PlayerManager {
     }
 
     setup() {// going to run at setup
-        this.sprite = this.makePlayer(300, 460, 50, 50);
+        this.sprite = this.makePlayer(this.x, this.y);
     }
 
     draw() {// going to run at draw
@@ -36,8 +38,8 @@ class PlayerManager {
         camera.zoom = 1;
     }
 
-    makePlayer(x, y, sizeX, sizeY) { // createsprite
-        let tempPlayer = createSprite(x, y, sizeX, sizeY);
+    makePlayer(x, y) { // createsprite
+        let tempPlayer = createSprite(x, y, 50, 50);
         tempPlayer.setCollider("rectangle", 0, 0, 50, 50)
         tempPlayer.addAnimation("idle", idleAnim)
         tempPlayer.addAnimation("running", runningAnim)

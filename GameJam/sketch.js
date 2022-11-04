@@ -15,10 +15,10 @@ let transform, rage;
 let rage1, rageSpr1;
 let rage2, rageSpr2;
 let background1;
-////////////////////////GROUP VARIABLES////////////////////////
+////////////////////////Class VARIABLES////////////////////////
 let player = new PlayerManager();
-let enemyA = new MinionManagerA();
-let enemyB = new MinionManagerB();
+let enemyA = new MinionManagerA(200,400);
+let enemyB = new MinionManagerB(400,200);
 ////////////////////////BACKGROUND VARIABLES////////////////////////
 
 function preload() {
