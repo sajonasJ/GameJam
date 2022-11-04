@@ -11,16 +11,21 @@ var runningLeftSpriteSheet;
 var runningLeftAnim;
 let pAttack;
 let pAttackSprite;
+let transform, rage;
+let rage1, rageSpr1;
+let rage2, rageSpr2;
+let background1;
+////////////////////////GROUP VARIABLES////////////////////////
 let player = new PlayerManager();
 let enemyA = new MinionManagerA();
 let enemyB = new MinionManagerB();
-let background1;
+////////////////////////BACKGROUND VARIABLES////////////////////////
 
 function preload() {
+  background1 = loadImage("assets/images/background1.png")
   player.preload()
   enemyA.preload()
   enemyB.preload()
-  background1 = loadImage("assets/images/background1.png")
   font = loadFont("fonts/joystix monospace.ttf")
   mainMenuBG = loadImage("assets/images/mainMenuBG.png")
   playButtonIMG = loadImage("assets/images/playbutton.png.png")
@@ -37,6 +42,7 @@ function setup() {
 
 function draw() {
   drawScreens();
+ 
 }
 ////////////////////////DRAWSCREEN CONTROL////////////////////////
 function drawMainMenu() {
@@ -54,7 +60,9 @@ function drawGamePlay() {
   hideMainMenuButtons();
   returnButton.hide();
   player.draw();
-
+  enemyA.draw();
+  enemyB.draw();
+  console.log(frameCount);
 
   ////////////////////////TEMP BCKGRND////////////////////////
 
@@ -63,7 +71,11 @@ function drawGamePlay() {
   image(background1, 0, 0, 3840, 0);
   createHealthBar();
   spriteWalls();
+  // for (let closingIn of enemyA.Group) {
+  //   closingIn.attractionPoint(2, player.position.x, player.position.y);
+  // }
   drawSprites();
+
 }
 
 function createHealthBar() {//healthbar && health spawner
@@ -131,6 +143,6 @@ function spriteWalls() {
     if (aSpr.position.x < 20) { aSpr.velocity.x *= 0; aSpr.position.x = 20; }
     if (aSpr.position.x > 3820) { aSpr.velocity.x *= 0; aSpr.position.x = 3820; }
     if (aSpr.position.y < 400) { aSpr.velocity.y *= 0; aSpr.position.y = 400; }
-    if (aSpr.position.y > height-25) { aSpr.velocity.y *= 0; aSpr.position.y = height - 25; }
+    if (aSpr.position.y > height - 25) { aSpr.velocity.y *= 0; aSpr.position.y = height - 25; }
   }
 }

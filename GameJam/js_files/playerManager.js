@@ -14,7 +14,16 @@ class PlayerManager {
         idleAnim.frameDelay = 12;
         pAttackSprite = loadSpriteSheet("assets/images/player/playerAttack.png", 100, 100, 4)
         pAttack = loadAnimation(pAttackSprite);
-        pAttack.frameDelay = 8;
+        pAttack.frameDelay = 4;
+        transform=loadSpriteSheet("assets/images/player/rage.png", 100, 100, 14)
+        rage=loadAnimation(transform)
+        rageSpr1=loadSpriteSheet("assets/images/player/rage1.png", 80, 100, 6)//o
+        rage1=loadAnimation(rageSpr1)
+        rageSpr2=loadSpriteSheet("assets/images/player/rage2.png", 80, 100, 6)//i
+        rage2=loadAnimation(rageSpr2)
+        rage.frameDelay = 12;
+        rage1.frameDelay = 4;
+        rage2.frameDelay = 4;
     }
 
     setup() {// going to run at setup
@@ -34,6 +43,9 @@ class PlayerManager {
         tempPlayer.addAnimation("running", runningAnim)
         tempPlayer.addAnimation("runningLeft", runningLeftAnim)
         tempPlayer.addAnimation("attack", pAttack);
+        tempPlayer.addAnimation("transform", rage);
+        tempPlayer.addAnimation("transform1", rage1);
+        tempPlayer.addAnimation("transform2", rage2);
         tempPlayer.friction = 0.25;
         // dtempPlayer.debug = true;
         return tempPlayer
@@ -44,6 +56,7 @@ class PlayerManager {
         let left = keyDown(LEFT_ARROW), s = keyDown('s')
         let right = keyDown(RIGHT_ARROW), d = keyDown('d');
         let space = keyDown(32);
+        let p = keyDown(80), o = keyDown(79),i=keyDown(73);
         //LOGIC
         if (left || a) {
             this.sprite.velocity.x = -5;
@@ -64,6 +77,15 @@ class PlayerManager {
             this.sprite.changeAnimation("attack")
         } else {
             this.sprite.changeAnimation("idle")
+        }
+        if (p){
+            this.sprite.changeAnimation("transform")
+        }
+        if (o){
+            this.sprite.changeAnimation("transform1")
+        }
+        if (i){
+            this.sprite.changeAnimation("transform2")
         }
     }
 }

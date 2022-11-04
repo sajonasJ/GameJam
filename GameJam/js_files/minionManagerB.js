@@ -11,11 +11,11 @@ class MinionManagerB {
     }
 
     setup() {
-        this.sprite = this.makeMinionB(400, 660, 50, 50);
+        this.sprite = this.makeMinionB(1000, 660, 50, 50);
     }
 
     draw() {
-
+        this.sprite.setSpeed(1.5, 180);
     }
 
     makeMinionB(x, y, sizeX, sizeY) {
