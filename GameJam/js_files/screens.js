@@ -5,7 +5,7 @@ const CREDITS = 3;
 const LOSE = 4;
 const WIN = 5;
 
-let currentState = MAIN_MENU;
+let currentState = GAME_PLAY;
 
 function drawScreens() {
  
@@ -22,4 +22,17 @@ function drawScreens() {
   } else if (currentState == WIN) {
     drawWin();
   }
+}
+
+function viewCredits() {
+  currentState = CREDITS
+}
+function viewGame() {
+  currentState = GAME_PLAY
+}
+function viewSettings() {
+  currentState = SETTINGS
+}
+function viewMainMenu() {
+  currentState = MAIN_MENU
 }
