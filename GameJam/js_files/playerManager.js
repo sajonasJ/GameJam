@@ -9,7 +9,7 @@ let pAttackSprite;
 let transform, rage;
 let rage1, rageSpr1;
 let rage2, rageSpr2;
-
+let health = 100, maxHealth = 100;
 class PlayerManager {
     constructor() {
         this.sprite;

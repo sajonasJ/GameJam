@@ -1,11 +1,9 @@
 "use strict"
 ////////////////////////VARIABLES////////////////////////
-let health = 100, maxHealth = 100;
+
 ////////////////////////IMAGE ANIMATION VARIABLES////////////////////////
 let background1;
-let creditBackground;
-let settingBackground;
-let mainMenuBG;
+
 ////////////////////////Class VARIABLES////////////////////////
 let player = new PlayerManager();
 let enemyA = [];
@@ -17,7 +15,7 @@ for (let i = 0; i < 3; i++) {//blue
   enemyB[i] = new MinionManagerB();
 }
 
-////////////////////////CURRENT SCREEN STATE////////////////////////
+////////////////////////CURRENT SCREEN STATE CONTROL////////////////////////
 let currentState = MAIN_MENU;
 // let currentState = GAME_PLAY;
 // let currentState = CREDITS;
@@ -34,7 +32,7 @@ function preload() {
   playButtonIMG = loadImage("assets/images/playbutton.png.png");
   creditsButtonIMG = loadImage("assets/images/creditsButton.png");
   creditBackground = loadImage("assets/images/creditBackground.jpg");
-  settingBackground = loadImage("assets/images/settingBackground.png");
+  settingsBackground = loadImage("assets/images/settingBackground.png");
   for (let i = 0; i < 3; i++) {
     enemyA[i].preload();
   }
@@ -62,16 +60,9 @@ function setup() {
 
 function draw() {
   drawScreens();
-}
-////////////////////////DRAWSCREEN CONTROL////////////////////////
-function drawMainMenu() {
-  background(155);
-  camera.off();
-  image(mainMenuBG, 0, 0)
-  mainMenuButtons();
-
 
 }
+//////////////////////////////////////////////////////////////////////////////
 function drawGamePlay() {
 gamePlayButtons();
   player.draw();
@@ -97,7 +88,6 @@ gamePlayButtons();
   drawSprites();
 }
 
-////////////////////////CREATE BUTTONS////////////////////////
 
 function spriteWalls() {
   for (let i = 0; i < allSprites.length; i++) {

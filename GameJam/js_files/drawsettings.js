@@ -1,7 +1,9 @@
+let settingsBackground;
+
 function drawSettings() {
   //background("yellow");
   camera.off();
-  image(settingBackground, 0, 0)
+  image(settingsBackground, 0, 0)
   noStroke();
   fill("white")
   rect(220, 150, 300, 150, 30);

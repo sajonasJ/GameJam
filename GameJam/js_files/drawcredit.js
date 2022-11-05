@@ -1,3 +1,4 @@
+let creditBackground;
 function drawCredits() {
   camera.off();
     image(creditBackground, 0, 0);
