@@ -93,8 +93,6 @@ class PlayerManager {
         }
     }
     createHealthBar() {//healthbar
-
-
         let healthBoxX = 500, healthBoxY = -300;
         noStroke();
         fill(255, 0, 0);

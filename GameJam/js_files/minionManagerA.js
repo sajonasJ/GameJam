@@ -17,7 +17,8 @@ class MinionManagerA {
     }
 
     draw() {
-        this.sprite.setSpeed(1.5, 180);
+        
+        this.sprite.setSpeed(random(1,5), 180);
     }
 
     makeMinionA(x, y) {
