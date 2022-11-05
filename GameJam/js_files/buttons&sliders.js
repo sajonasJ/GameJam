@@ -76,7 +76,7 @@ function buttonManager() {
     creditsButton.hide()
     settingsButton.hide()
   }
-  function WinButtons() {//ALL HIDE
+  function winButtons() {//ALL HIDE
     returnButton.hide();
     volumeSlider.hide();
     levelSlider.hide();
@@ -84,7 +84,7 @@ function buttonManager() {
     creditsButton.hide()
     settingsButton.hide()
   }
-  function LoseButtons() {//ALL HIDE
+  function loseButtons() {//ALL HIDE
     returnButton.hide();
     volumeSlider.hide();
     levelSlider.hide();
