@@ -1,3 +1,15 @@
+var runningSpriteSheet;
+var runningAnim;
+var idleSpriteSheet;
+var idleAnim;
+var runningLeftSpriteSheet;
+var runningLeftAnim;
+let pAttack;
+let pAttackSprite;
+let transform, rage;
+let rage1, rageSpr1;
+let rage2, rageSpr2;
+
 class PlayerManager {
     constructor() {
         this.sprite;
@@ -37,7 +49,7 @@ class PlayerManager {
         camera.position.y = this.sprite.position.y;//CAMERA CONTROL Y
         camera.zoom = 1;
         fill('green');
-        rect(this.sprite.position.x, this.sprite.position.y,1000,1000);
+        rect(this.sprite.position.x, this.sprite.position.y, 1000, 1000);
     }
 
     makePlayer(x, y) { // createsprite
@@ -55,9 +67,7 @@ class PlayerManager {
         return tempPlayer
     }
     keyPressed() {
-        let up = keyDown(UP_ARROW), w = keyDown('w');
-        let down = keyDown(DOWN_ARROW), a = keyDown('a');
-        let left = keyDown(LEFT_ARROW), s = keyDown('s')
+        let left = keyDown(LEFT_ARROW), a = keyDown('a')
         let right = keyDown(RIGHT_ARROW), d = keyDown('d');
         let space = keyDown(32);
         let p = keyDown(80), o = keyDown(79), i = keyDown(73);
@@ -65,14 +75,6 @@ class PlayerManager {
         if (left || a) {
             this.sprite.velocity.x = -5;
             this.sprite.changeAnimation("runningLeft")
-        }
-        else if (up || w) {
-            this.sprite.velocity.y = -5;
-            this.sprite.changeAnimation("running")
-        }
-        else if (down || s) {
-            this.sprite.velocity.y = +5;
-            this.sprite.changeAnimation("running")
         }
         else if (right || d) {
             this.sprite.velocity.x = +5;
@@ -91,5 +93,27 @@ class PlayerManager {
         if (i) {
             this.sprite.changeAnimation("transform2")
         }
+    }
+    createHealthBar() {//healthbar && health spawner
+
+        fill(214, 204, 194);
+        rectMode(CENTER);
+        rect(camera.position.x, camera.position.y + 250, 1300, 250);
+
+        let healthBoxX = 480, healthBoxY = 175;
+        noStroke();
+        fill(255, 0, 0);
+        rect(camera.position.x - healthBoxX, camera.position.y + healthBoxY, map(health, 0, maxHealth, 0, 200), 15);//health=0 to max=100 length 200;red
+        stroke(0);
+        strokeWeight(4);
+        noFill();
+        rect(camera.position.x - healthBoxX, camera.position.y + healthBoxY, 200, 15);//rectbox
+
+        let textOffSetX = 480, textOffsetY = 155;
+        fill(0);
+        strokeWeight(1);
+        textSize(24);
+        textAlign(RIGHT);
+        text("HEALTH:", camera.position.x - textOffSetX, camera.position.y + textOffsetY);
     }
 }

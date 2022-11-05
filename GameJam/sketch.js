@@ -1,24 +1,11 @@
 "use strict"
 ////////////////////////VARIABLES////////////////////////
-let playButton, creditsButton, settingsButton, returnButton, settingsIcon, font, mainMenuBG, playButtonIMG, creditsButtonIMG;
 let health = 100, maxHealth = 100;
 ////////////////////////IMAGE ANIMATION VARIABLES////////////////////////
-var runningSpriteSheet;
-var runningAnim;
-var idleSpriteSheet;
-var idleAnim;
-var runningLeftSpriteSheet;
-var runningLeftAnim;
-let pAttack;
-let pAttackSprite;
-let transform, rage;
-let rage1, rageSpr1;
-let rage2, rageSpr2;
 let background1;
-let volumeSlider;
-let levelSlider;
 let creditBackground;
 let settingBackground;
+let mainMenuBG;
 ////////////////////////Class VARIABLES////////////////////////
 let player = new PlayerManager();
 let enemyA = [];
@@ -29,6 +16,14 @@ for (let i = 0; i < 3; i++) {//green
 for (let i = 0; i < 3; i++) {//blue
   enemyB[i] = new MinionManagerB();
 }
+
+////////////////////////CURRENT SCREEN STATE////////////////////////
+let currentState = MAIN_MENU;
+// let currentState = GAME_PLAY;
+// let currentState = CREDITS;
+// let currentState = SETTINGS;
+// let currentState = WIN;
+// let currentState = LOSE;
 ////////////////////////BACKGROUND VARIABLES////////////////////////
 
 function preload() {
@@ -46,7 +41,6 @@ function preload() {
   for (let i = 0; i < 3; i++) {
     enemyB[i].preload();
   }
-  
 }
 
 function setup() {
@@ -72,24 +66,15 @@ function draw() {
 ////////////////////////DRAWSCREEN CONTROL////////////////////////
 function drawMainMenu() {
   background(155);
+  camera.off();
   image(mainMenuBG, 0, 0)
-  showMainMenuButtons();
-  returnButton.hide();
-  creditsButton.mousePressed(viewCredits);
-  playButton.mousePressed(viewGame);
-  settingsButton.mousePressed(viewSettings);
-  returnButton.mousePressed(viewMainMenu);
-  volumeSlider.hide();
-  levelSlider.hide();
+  mainMenuButtons();
+
+
 }
 function drawGamePlay() {
-  hideMainMenuButtons();
-  returnButton.hide();
+gamePlayButtons();
   player.draw();
-  volumeSlider.hide();
-  levelSlider.hide();
-
-
 
   for (let i = 0; i < 3; i++) {//enemy1
     enemyA[i].draw();
@@ -107,77 +92,12 @@ function drawGamePlay() {
   // for (let closingIn of enemyA.Group) { NOT YET GROUPED
   //   closingIn.attractionPoint(2, player.position.x, player.position.y);
   // }
-  
-  createHealthBar();
+
+  player.createHealthBar();
   drawSprites();
-
 }
-
-function createHealthBar() {//healthbar && health spawner
-
-  fill(214, 204, 194);
-  rectMode(CENTER);
-  rect(camera.position.x, camera.position.y + 250, 1300, 250);
-
-  let healthBoxX= 480, healthBoxY=175;
-  noStroke();
-  fill(255, 0, 0);
-  rect(camera.position.x - healthBoxX, camera.position.y + healthBoxY, map(health, 0, maxHealth, 0, 200), 15);//health=0 to max=100 length 200;red
-  stroke(0);
-  strokeWeight(4);
-  noFill();
-  rect(camera.position.x - healthBoxX, camera.position.y + healthBoxY, 200, 15);//rectbox
-
-  let textOffSetX=480, textOffsetY=155;
-  fill(0);
-  strokeWeight(1);
-  textSize(24);
-  textAlign(RIGHT);
-  text("HEALTH:", camera.position.x - textOffSetX, camera.position.y + textOffsetY);
-}
-
-
-
-function drawLose() {
-  background(155);
-}
-function drawWin() {
-  background(155);
-}
-////////////////////////CONTROL BUTTONS////////////////////////
-
-
 
 ////////////////////////CREATE BUTTONS////////////////////////
-function buttonManager() {
-
-  creditsButton = createImg("assets/images/creditsButton.png")
-  creditsButton.position(950, 150)
-
- 
-  returnButton = createImg("assets/images/returnbutton.png")
-  returnButton.position(1120, 40);
-  returnButton.size(100, 100);
-  returnButton.hide();
-
-  settingsButton = createImg("assets/images/settingsCog.png")
-  settingsButton.position(50, 50)
-
-  playButton = createImg("assets/images/playButton.png.png")
-  playButton.position(950, 50)
-}
-
-
-function showMainMenuButtons() {
-  playButton.show()
-  creditsButton.show()
-  settingsButton.show()
-}
-function hideMainMenuButtons() {
-  playButton.hide()
-  creditsButton.hide()
-  settingsButton.hide()
-}
 
 function spriteWalls() {
   for (let i = 0; i < allSprites.length; i++) {
