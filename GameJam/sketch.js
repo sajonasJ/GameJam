@@ -28,7 +28,7 @@ let currentState = GAME_PLAY;
 ////////////////////////BACKGROUND VARIABLES////////////////////////
 
 function preload() {
-  background1 = loadImage("assets/images/background.png");
+  background1 = loadImage("assets/images/background1280x720.png");
   player.preload();
   font = loadFont("fonts/joystix monospace.ttf");
   mainMenuBG = loadImage("assets/images/mainMenuBG.png");
