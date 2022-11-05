@@ -1,6 +1,4 @@
-let playButton, creditsButton, settingsButton, returnButton; 
-let settingsIcon, font, playButtonIMG, creditsButtonIMG;
-let volumeSlider, levelSlider;
+
 
 
 function buttonManager() {

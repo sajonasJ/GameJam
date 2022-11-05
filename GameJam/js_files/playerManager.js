@@ -45,11 +45,9 @@ class PlayerManager {
     }
 
     draw() {// going to run at draw
-        camera.position.x = this.sprite.position.x;//CAMERA CONTROL X
-        camera.position.y = this.sprite.position.y;//CAMERA CONTROL Y
+        camera.position.x = this.sprite.position.x+540;//CAMERA CONTROL X
+        camera.position.y = this.sprite.position.y-295;//CAMERA CONTROL Y
         camera.zoom = 1;
-        fill('green');
-        rect(this.sprite.position.x, this.sprite.position.y, 1000, 1000);
     }
 
     makePlayer(x, y) { // createsprite
@@ -94,13 +92,10 @@ class PlayerManager {
             this.sprite.changeAnimation("transform2")
         }
     }
-    createHealthBar() {//healthbar && health spawner
+    createHealthBar() {//healthbar
 
-        fill(214, 204, 194);
-        rectMode(CENTER);
-        rect(camera.position.x, camera.position.y + 250, 1300, 250);
 
-        let healthBoxX = 480, healthBoxY = 175;
+        let healthBoxX = 500, healthBoxY = -300;
         noStroke();
         fill(255, 0, 0);
         rect(camera.position.x - healthBoxX, camera.position.y + healthBoxY, map(health, 0, maxHealth, 0, 200), 15);//health=0 to max=100 length 200;red
@@ -109,7 +104,7 @@ class PlayerManager {
         noFill();
         rect(camera.position.x - healthBoxX, camera.position.y + healthBoxY, 200, 15);//rectbox
 
-        let textOffSetX = 480, textOffsetY = 155;
+        let textOffSetX = 400, textOffsetY = -310;
         fill(0);
         strokeWeight(1);
         textSize(24);

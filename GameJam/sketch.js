@@ -1,3 +1,6 @@
+let playbutton, creditsButton, settingsButton, returnButton; 
+let settingsIcon, font, playButtonIMG, creditsButtonIMG;
+let volumeSlider, levelSlider;
 "use strict"
 ////////////////////////VARIABLES////////////////////////
 
@@ -16,8 +19,8 @@ for (let i = 0; i < 3; i++) {//blue
 }
 
 ////////////////////////CURRENT SCREEN STATE CONTROL////////////////////////
-let currentState = MAIN_MENU;
-// let currentState = GAME_PLAY;
+// let currentState = MAIN_MENU;
+let currentState = GAME_PLAY;
 // let currentState = CREDITS;
 // let currentState = SETTINGS;
 // let currentState = WIN;
@@ -25,7 +28,7 @@ let currentState = MAIN_MENU;
 ////////////////////////BACKGROUND VARIABLES////////////////////////
 
 function preload() {
-  background1 = loadImage("assets/images/background1.png");
+  background1 = loadImage("assets/images/background.png");
   player.preload();
   font = loadFont("fonts/joystix monospace.ttf");
   mainMenuBG = loadImage("assets/images/mainMenuBG.png");
@@ -43,7 +46,7 @@ function preload() {
 
 function setup() {
   createCanvas(1280, 720);
-  player.setup(100, 600);
+  player.setup(100, 650);
   buttonManager();
   sliderManager();
   for (let i = 0; i < 3; i++) {//green
@@ -64,8 +67,6 @@ function draw() {
 }
 //////////////////////////////////////////////////////////////////////////////
 function drawGamePlay() {
-gamePlayButtons();
-  player.draw();
 
   for (let i = 0; i < 3; i++) {//enemy1
     enemyA[i].draw();
@@ -77,14 +78,14 @@ gamePlayButtons();
   ////////////////////////TEMP BCKGRND////////////////////////
 
   background(0);
-  player.keyPressed();
-  image(background1, 0, 0, 3840, 0);
-  spriteWalls();
-  // for (let closingIn of enemyA.Group) { NOT YET GROUPED
-  //   closingIn.attractionPoint(2, player.position.x, player.position.y);
-  // }
-
+  for(let i=0; i<10;i++){
+    image(background1, 0+1280*[i], 0, 1280,720);
+  }
   player.createHealthBar();
+  player.draw();
+  player.keyPressed();
+  gamePlayButtons();
+  spriteWalls();
   drawSprites();
 }
 
@@ -92,8 +93,8 @@ gamePlayButtons();
 function spriteWalls() {
   for (let i = 0; i < allSprites.length; i++) {
     let aSpr = allSprites[i];
-    if (aSpr.position.x < 20) { aSpr.velocity.x *= 0; aSpr.position.x = 20; }
-    if (aSpr.position.x > 3820) { aSpr.velocity.x *= 0; aSpr.position.x = 3820; }
+    if (aSpr.position.x < 100) { aSpr.velocity.x *= 0; aSpr.position.x = 100; }
+    if (aSpr.position.x > 12800) { aSpr.velocity.x *= 0; aSpr.position.x = 1280; }
     if (aSpr.position.y < 400) { aSpr.velocity.y *= 0; aSpr.position.y = 400; }
     if (aSpr.position.y > height - 25) { aSpr.velocity.y *= 0; aSpr.position.y = height - 25; }
   }
