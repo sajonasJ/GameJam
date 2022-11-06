@@ -3,18 +3,12 @@
 ////////////////////////VARIABLES////////////////////////
 
 ////////////////////////IMAGE ANIMATION VARIABLES////////////////////////
-let background1;
 
 ////////////////////////Class VARIABLES////////////////////////
 let player = new PlayerManager();
-let enemyA = [];
-let enemyB = [];
-for (let i = 0; i < 10; i++) {//green
-  enemyA[i] = new MinionManagerA();
-}
-for (let i = 0; i < 10; i++) {//blue
-  enemyB[i] = new MinionManagerB();
-}
+let enemyA = new MinionManagerA();
+let enemyB = new MinionManagerB();
+
 
 ////////////////////////CURRENT SCREEN STATE CONTROL////////////////////////
 // let currentState = MAIN_MENU;
@@ -26,8 +20,11 @@ let currentState = GAME_PLAY;
 ////////////////////////BACKGROUND VARIABLES////////////////////////
 
 function preload() {
+  assetPreload();
   background1 = loadImage("assets/images/background1280x720.png");
   player.preload();
+  enemyA.preload();
+  enemyB.preload();
   font = loadFont("fonts/joystix monospace.ttf");
   mainMenuBG = loadImage("assets/images/mainMenuBG.png");
   playButtonIMG = loadImage("assets/images/playbutton.png.png");
@@ -40,6 +37,8 @@ function preload() {
 function setup() {
   createCanvas(1280, 720);
   player.setup(100, 650);
+  enemyA.setup();
+  enemyB.setup();
   buttonManager();
   sliderManager();
 
@@ -48,7 +47,7 @@ function setup() {
 function draw() {
   drawScreens();
 }
-//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////DRAW GAMEPLAY//////////////////////////////////////////
 function drawGamePlay() {
 
 

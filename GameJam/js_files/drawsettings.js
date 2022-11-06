@@ -1,8 +1,8 @@
-let settingsBackground;
 
 function drawSettings() {
   //background("yellow");
   camera.off();
+  push();
   image(settingsBackground, 0, 0)
   noStroke();
   fill("white")
@@ -19,6 +19,7 @@ function drawSettings() {
   text("easy", 740, 280);
   text("normal", 890, 280);
   text("hard", 1060, 280);
-
+  pop();
   settingsButtons();
+  
 }

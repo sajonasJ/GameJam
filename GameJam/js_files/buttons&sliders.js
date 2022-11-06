@@ -1,29 +1,23 @@
-let playButton, creditsButton, settingsButton, returnButton; 
-let settingsIcon, font, playButtonIMG, creditsButtonIMG;
 let volumeSlider, levelSlider;
-
-
 function buttonManager() {
-
-  creditsButton = createImg("assets/images/creditsButton.png")
+push();
   creditsButton.position(950, 150)
   creditsButton.hide();
 
-  returnButton = createImg("assets/images/returnbutton.png")
   returnButton.position(1120, 40);
   returnButton.size(100, 100);
   returnButton.hide();
 
-  settingsButton = createImg("assets/images/settingsCog.png")
   settingsButton.position(50, 50)
   settingsButton.hide();
 
-  playButton = createImg("assets/images/playButton.png.png")
   playButton.position(950, 50)
   playButton.hide();
+  pop();
 }
 
 function sliderManager() {
+  push();
   volumeSlider = createSlider(0, 100, 0);
   volumeSlider.position(270, 230);
   volumeSlider.style("width", "200px");
@@ -33,6 +27,7 @@ function sliderManager() {
   levelSlider.position(750, 230);
   levelSlider.style("width", "350px");
   levelSlider.hide();
+  pop();
 }
 
 function mainMenuButtons() {
@@ -58,16 +53,16 @@ function gamePlayButtons() {
   settingsButton.show()
 }
 function creditButtons() {
- 
+
   returnButton.mousePressed(viewMainMenu);
-returnButton.mousePressed(viewMainMenu);
-returnButton.show();
-volumeSlider.hide();
-levelSlider.hide();
-playButton.hide()
-creditsButton.hide()
-settingsButton.hide()
-  }
+  returnButton.mousePressed(viewMainMenu);
+  returnButton.show();
+  volumeSlider.hide();
+  levelSlider.hide();
+  playButton.hide()
+  creditsButton.hide()
+  settingsButton.hide()
+}
 
 function settingsButtons() {
   returnButton.mousePressed(viewMainMenu);

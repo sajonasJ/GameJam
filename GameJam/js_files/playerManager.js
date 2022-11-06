@@ -46,8 +46,8 @@ class PlayerManager {
     }
 
     draw() {// going to run at draw
-        camera.position.x = this.sprite.position.x+540;//CAMERA CONTROL X
-        camera.position.y = this.sprite.position.y-295;//CAMERA CONTROL Y
+        camera.position.x = this.sprite.position.x + 540;//CAMERA CONTROL X
+        camera.position.y = this.sprite.position.y - 295;//CAMERA CONTROL Y
         camera.zoom = 1;
         this.keyPressed();
         this.createHealthBar();
@@ -64,8 +64,8 @@ class PlayerManager {
         tempPlayer.addAnimation("transform1", rage1);
         tempPlayer.addAnimation("transform2", rage2);
         tempPlayer.friction = 0.25;
-        tempPlayer.debug=true;
-        tempPlayer.mass=10;
+        tempPlayer.debug = true;
+        tempPlayer.mass = 10;
         // dtempPlayer.debug = true;
         return tempPlayer
     }
@@ -98,20 +98,27 @@ class PlayerManager {
         }
     }
     createHealthBar() {//healthbar
+        push();
         let healthBoxX = 500, healthBoxY = -300;
         noStroke();
         fill(255, 0, 0);
-        rect(camera.position.x - healthBoxX, camera.position.y + healthBoxY, map(health, 0, maxHealth, 0, 200), 15);//health=0 to max=100 length 200;red
+        rect(camera.position.x - healthBoxX,
+            camera.position.y + healthBoxY,
+            map(health, 0, maxHealth, 0, 200), 15);//health=0 to max=100 length 200;red
         stroke(0);
         strokeWeight(4);
         noFill();
-        rect(camera.position.x - healthBoxX, camera.position.y + healthBoxY, 200, 15);//rectbox
-
+        rect(camera.position.x - healthBoxX, 
+            camera.position.y + healthBoxY, 200, 15);//rectbox
+        pop();
+        push();
+        
         let textOffSetX = 400, textOffsetY = -310;
         fill(0);
         strokeWeight(1);
         textSize(24);
         textAlign(RIGHT);
         text("HEALTH:", camera.position.x - textOffSetX, camera.position.y + textOffsetY);
+        pop();
     }
 }
