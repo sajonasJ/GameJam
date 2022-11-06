@@ -1,7 +1,9 @@
 let enemyWalkSheetB, enemyAnimB;
 class MinionManagerB {
     constructor() {
-        this.sprite;
+        this.group;
+        this.walkSpeed=2;
+        this.leftDirection=180;
     }
 
     preload() {
@@ -10,21 +12,22 @@ class MinionManagerB {
         enemyAnimB.frameDelay = 4;
     }
 
-    setup(x,y) {
-        this.x=x;
-        this.y=y;
-        this.sprite = this.makeMinionB(this.x, this.y);
+    setup() {
+        this.group=new Group();
+        this.group.add(this.makeMinionB(700, 650))
     }
 
     draw() {
-        this.sprite.setSpeed(1.5, 180);
     }
 
     makeMinionB(x, y) {
         let minionB = createSprite(x, y, 50, 50);
         minionB.setCollider("rectangle", 0, 0, 50, 50);
-        minionB.addAnimation("walke",enemyAnimB); 
-        minionB.friction = 0.25;
+        minionB.addAnimation("walk", enemyAnimB);
+        minionB.setSpeed(this.walkSpeed, this.leftDirection);
+        minionB.mass=10;
+        // minionB.friction = 0.25;
+        minionB.debug=true;
         return minionB
     }
 }

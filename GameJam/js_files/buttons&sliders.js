@@ -1,4 +1,6 @@
-
+let playButton, creditsButton, settingsButton, returnButton; 
+let settingsIcon, font, playButtonIMG, creditsButtonIMG;
+let volumeSlider, levelSlider;
 
 
 function buttonManager() {
@@ -58,8 +60,6 @@ function gamePlayButtons() {
 function creditButtons() {
  
   returnButton.mousePressed(viewMainMenu);
-
-
 returnButton.mousePressed(viewMainMenu);
 returnButton.show();
 volumeSlider.hide();

@@ -10,6 +10,7 @@ let transform, rage;
 let rage1, rageSpr1;
 let rage2, rageSpr2;
 let health = 100, maxHealth = 100;
+
 class PlayerManager {
     constructor() {
         this.sprite;
@@ -48,6 +49,8 @@ class PlayerManager {
         camera.position.x = this.sprite.position.x+540;//CAMERA CONTROL X
         camera.position.y = this.sprite.position.y-295;//CAMERA CONTROL Y
         camera.zoom = 1;
+        this.keyPressed();
+        this.createHealthBar();
     }
 
     makePlayer(x, y) { // createsprite
@@ -61,6 +64,8 @@ class PlayerManager {
         tempPlayer.addAnimation("transform1", rage1);
         tempPlayer.addAnimation("transform2", rage2);
         tempPlayer.friction = 0.25;
+        tempPlayer.debug=true;
+        tempPlayer.mass=10;
         // dtempPlayer.debug = true;
         return tempPlayer
     }
