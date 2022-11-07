@@ -133,7 +133,7 @@ class PlayerManager {
         tempAttack.setCollider("rectangle",0,0,30,30);
         tempAttack.debug=true;
         tempAttack.life=5;
-        tempAttack.visible=true;
+        tempAttack.visible=false;
         this.group.add(tempAttack);
         return tempAttack;
     }
