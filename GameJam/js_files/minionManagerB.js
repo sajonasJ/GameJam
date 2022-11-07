@@ -4,6 +4,9 @@ class MinionManagerB {
         this.group;
         this.walkSpeed=2;
         this.leftDirection=180;
+        this.health=0;
+        this.maxHealth=100;
+        this.sprite;
     }
 
     preload() {
@@ -12,12 +15,16 @@ class MinionManagerB {
         enemyAnimB.frameDelay = 4;
     }
 
-    setup() {
+    setup(x,y) {
         this.group=new Group();
-        this.group.add(this.makeMinionB(700, 650))
+        this.x=x;
+        this.y=y;
+        // this.group.add(this.makeMinionB(this.x, this.y));
+        this.sprite = this.makeMinionB(this.x,this.y);
     }
 
     draw() {
+        this.createHealthBar();
     }
 
     makeMinionB(x, y) {
@@ -28,6 +35,26 @@ class MinionManagerB {
         minionB.mass=10;
         // minionB.friction = 0.25;
         minionB.debug=true;
+        this.group.add(minionB);
         return minionB
+    }
+    createHealthBar() {//healthbar
+        push();
+        let healthBoxX = this.sprite.position.x-25;
+        let healthBoxY = this.sprite.position.y-40;
+        let boxWidth=50,boxHeight=8;
+        noStroke();
+        fill(255, 0, 0);
+        rect(healthBoxX,healthBoxY,
+             map(health, 0, maxHealth, 0, boxWidth), boxHeight);
+             //health=0 to max=100 length 200;red
+        stroke(0);
+        strokeWeight(2);
+        noFill(0);
+        rect(healthBoxX,healthBoxY, boxWidth,boxHeight);//healthsize x,y + boxsize x,y
+        pop();
+    
+        
+     
     }
 }

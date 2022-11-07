@@ -4,6 +4,9 @@ class MinionManagerA {
         this.group;
         this.walkSpeed=2;
         this.leftDirection=180;
+        this.health=0;
+        this.maxHealth=100;
+        this.sprite;
     }
 
     preload() {
@@ -12,22 +15,46 @@ class MinionManagerA {
         enemyAnimA.frameDelay = 4;
     }
 
-    setup() {
+    setup(x,y) {
         this.group=new Group();
-        this.group.add(this.makeMinionA(600, 650))
+        this.x=x;
+        this.y=y;
+        // this.group.add(this.makeMinionA(this.x, this.y));
+        this.sprite = this.makeMinionA(this.x,this.y);
     }
 
-    draw() {
+    draw() { 
+        this.createHealthBar();
     }
 
     makeMinionA(x, y) {
-        let minionA = createSprite(x, y, 50, 50);
+        let minionA = createSprite(x, y);
         minionA.setCollider("rectangle", 0, 0, 50, 50);
         minionA.addAnimation("walk", enemyAnimA);
         minionA.setSpeed(this.walkSpeed, this.leftDirection);
         minionA.mass=10;
         //  minionA.friction = 0.25;
         minionA.debug=true;
+        this.group.add(minionA);
         return minionA
+    }
+    createHealthBar() {//healthbar
+        push();
+        let healthBoxX = this.sprite.position.x-25;
+        let healthBoxY = this.sprite.position.y-40;
+        let boxWidth=50,boxHeight=8;
+        noStroke();
+        fill(255, 0, 0);
+        rect(healthBoxX,healthBoxY,
+             map(health, 0, maxHealth, 0, boxWidth), boxHeight);
+             //health=0 to max=100 length 200;red
+        stroke(0);
+        strokeWeight(2);
+        noFill(0);
+        rect(healthBoxX,healthBoxY, boxWidth,boxHeight);//healthsize x,y + boxsize x,y
+        pop();
+    
+        
+     
     }
 }

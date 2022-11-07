@@ -44,10 +44,9 @@ function mainMenuButtons() {
 }
 function gamePlayButtons() {
   settingsButton.mousePressed(viewSettings);
-  returnButton.mousePressed(viewMainMenu);
   volumeSlider.hide();
   levelSlider.hide();
-  returnButton.show();
+  returnButton.hide();
   playButton.hide()
   creditsButton.hide()
   settingsButton.show()

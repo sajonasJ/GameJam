@@ -13,9 +13,9 @@ let health = 100, maxHealth = 100;
 
 class PlayerManager {
     constructor() {
-        this.sprite;  
-        this.group;  
-        
+        this.sprite;
+        this.group;
+
     }
     preload() {//preload
         runningSpriteSheet = loadSpriteSheet("assets/images/player/running1400.png", 100, 100, 6)
@@ -45,17 +45,17 @@ class PlayerManager {
         this.x = x;
         this.y = y;
         this.sprite = this.makePlayer(this.x, this.y);
-        this.group = new Group;
+        this.group = new Group();
     }
 
     draw() {// going to run at draw
-        
+
         camera.position.x = this.sprite.position.x + 540;//CAMERA CONTROL X
         camera.position.y = this.sprite.position.y - 295;//CAMERA CONTROL Y
         camera.zoom = 1;
         this.keyPressed();
         this.createHealthBar();
-        
+
     }
 
     makePlayer(x, y) { // createsprite
@@ -89,7 +89,7 @@ class PlayerManager {
             this.sprite.changeAnimation("running")
         } else if (space) {
             this.sprite.changeAnimation("attack")
-             this.attackSprite();
+            this.attackSprite();
         } else {
             this.sprite.changeAnimation("idle")
         }
@@ -114,26 +114,25 @@ class PlayerManager {
         stroke(0);
         strokeWeight(4);
         noFill();
-        rect(camera.position.x - healthBoxX, 
+        rect(camera.position.x - healthBoxX,
             camera.position.y + healthBoxY, 200, 15);//rectbox
         pop();
         push();
-        
-        let textOffSetX = 400, textOffsetY = -310;
+        let textOffSetX = 500, textOffsetY = -310;
         fill(0);
-        strokeWeight(1);
+        strokeWeight(4);
         textSize(24);
-        textAlign(RIGHT);
-        text("HEALTH:", camera.position.x - textOffSetX, camera.position.y + textOffsetY);
+        textAlign(LEFT);
+        text("HEALTH:"+health, camera.position.x - textOffSetX, camera.position.y + textOffsetY);
         pop();
     }
 
-    attackSprite(){
-        let tempAttack = createSprite(this.sprite.position.x+20,this.sprite.position.y);
-        tempAttack.setCollider("rectangle",0,0,120,100);
-        tempAttack.debug=true;
-        tempAttack.life=5;
-        tempAttack.visible=true;
+    attackSprite() {
+        let tempAttack = createSprite(this.sprite.position.x + 20, this.sprite.position.y);
+        tempAttack.setCollider("rectangle", 0, 0, 120, 100);
+        tempAttack.debug = true;
+        tempAttack.life = 5;
+        tempAttack.visible = true;
         this.group.add(tempAttack);
         return tempAttack;
     }
