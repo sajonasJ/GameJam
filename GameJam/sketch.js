@@ -21,8 +21,8 @@ function preload() {
 function setup() {
   createCanvas(1280, 720);
   player.setup(100, 650);
-  enemyA.setup(600, 650);
-  enemyB.setup(800, 650);
+  enemyA.setup(1800, 650);
+  enemyB.setup(1300, 650);
   buttonManager();
   sliderManager();
   cloudx = random(50, 800);
@@ -45,14 +45,14 @@ function drawGamePlay() {
   player.draw();
   enemyA.draw();
   enemyB.draw();
-  player.sprite.bounce(enemyA.group)
+  player.sprite.displace(enemyA.group,enemyHitPlayer);
   player.sprite.bounce(enemyB.group)
   player.group.displace(enemyA.group, playerHitEnemy);
-  player.group.displace(enemyB.group);
+  player.group.displace(enemyB.group, playerHitEnemy);
   gamePlayButtons();
   ///////////////////////////////////////////TO SPRITES
   cloudx += .5; // moving clouds
-  
+
   drawSprites();
 }
 ///////////////////////////////NEEDS TO BE TRANSLATED TO SPRITES
@@ -81,24 +81,9 @@ function clouds2(cloudx, cloudy) { // cloud3
 
 function playerHitEnemy(punch, enemy) {
   points += 100;
+  enemy.remove();
 }
-
-function scoreSystem() {
-  let textOffSetX = camera.position.x - 500;
-  let textOffsetY = camera.position.y - 250;
-  let boxOffsetX = camera.position.x - 600;
-  let BoxOffsetY = camera.position.y - 340;
-
-  push();
-  stroke(4);
-  fill(233, 196, 106);
-  // rect(boxOffsetX, BoxOffsetY, 320, 100);
-  pop();
-  push();
-  fill(0);
-  strokeWeight(4);
-  textSize(24);
-  textAlign(LEFT);
-  text('SCORE:' + points, textOffSetX, textOffsetY);
-  pop();
+function enemyHitPlayer(enemy,player){
+  player.health=-20;
+  console.log(player.health);
 }

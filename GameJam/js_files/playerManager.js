@@ -9,12 +9,13 @@ let pAttackSprite;
 let transform, rage;
 let rage1, rageSpr1;
 let rage2, rageSpr2;
-let health = 100, maxHealth = 100;
 
 class PlayerManager {
     constructor() {
         this.sprite;
         this.group;
+        this.health=100;
+        this.maxHealth=100;
 
     }
     preload() {//preload
@@ -54,7 +55,6 @@ class PlayerManager {
         camera.position.y = this.sprite.position.y - 295;//CAMERA CONTROL Y
         camera.zoom = 1;
         this.keyPressed();
-        this.createHealthBar();
 
     }
 
@@ -103,29 +103,7 @@ class PlayerManager {
             this.sprite.changeAnimation("transform2")
         }
     }
-    createHealthBar() {//healthbar
-        push();
-        let healthBoxX = 500, healthBoxY = -300;
-        noStroke();
-        fill(255, 0, 0);
-        rect(camera.position.x - healthBoxX,
-            camera.position.y + healthBoxY,
-            map(health, 0, maxHealth, 0, 200), 15);//health=0 to max=100 length 200;red
-        stroke(0);
-        strokeWeight(4);
-        noFill();
-        rect(camera.position.x - healthBoxX,
-            camera.position.y + healthBoxY, 200, 15);//rectbox
-        pop();
-        push();
-        let textOffSetX = 500, textOffsetY = -310;
-        fill(0);
-        strokeWeight(4);
-        textSize(24);
-        textAlign(LEFT);
-        text("HEALTH:"+health, camera.position.x - textOffSetX, camera.position.y + textOffsetY);
-        pop();
-    }
+
 
     attackSprite() {
         let tempAttack = createSprite(this.sprite.position.x + 20, this.sprite.position.y);

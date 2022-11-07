@@ -4,7 +4,7 @@ class MinionManagerB {
         this.group;
         this.walkSpeed=2;
         this.leftDirection=180;
-        this.health=0;
+        this.health=100;
         this.maxHealth=100;
         this.sprite;
     }
@@ -46,7 +46,7 @@ class MinionManagerB {
         noStroke();
         fill(255, 0, 0);
         rect(healthBoxX,healthBoxY,
-             map(health, 0, maxHealth, 0, boxWidth), boxHeight);
+             map(this.health, 0, this.maxHealth, 0, boxWidth), boxHeight);
              //health=0 to max=100 length 200;red
         stroke(0);
         strokeWeight(2);
