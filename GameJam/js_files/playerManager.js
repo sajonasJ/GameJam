@@ -130,10 +130,10 @@ class PlayerManager {
 
     attackSprite(){
         let tempAttack = createSprite(this.sprite.position.x+20,this.sprite.position.y);
-        tempAttack.setCollider("rectangle",0,0,30,30);
+        tempAttack.setCollider("rectangle",0,0,120,100);
         tempAttack.debug=true;
         tempAttack.life=5;
-        tempAttack.visible=false;
+        tempAttack.visible=true;
         this.group.add(tempAttack);
         return tempAttack;
     }

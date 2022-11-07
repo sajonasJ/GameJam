@@ -45,7 +45,8 @@ function drawGamePlay() {
   enemyB.draw();
   player.sprite.bounce(enemyA.group)
   player.sprite.bounce(enemyB.group)
-  player.group.bounce(enemyA.group);
+  player.group.displace(enemyA.group);
+  player.group.displace(enemyB.group);
   gamePlayButtons();
 ///////////////////////////////////////////TO SPRITES
   cloudx += .5; // moving clouds
