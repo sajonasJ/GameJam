@@ -2,6 +2,7 @@
 function levelBackground() {
   for (let i = 0; i < 10; i++) {
     image(bgCity, 0 + 1279.8 * [i], 0);
+    image(background1, 0 + 1279.8*[i],0)
     
   }
   for (let i = 0; i < allSprites.length; i++) {
