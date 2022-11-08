@@ -49,7 +49,7 @@ function gamePlayButtons() {
   returnButton.hide();
   playButton.hide()
   creditsButton.hide()
-  settingsButton.show()
+  settingsButton.hide()
 }
 function creditButtons() {
 

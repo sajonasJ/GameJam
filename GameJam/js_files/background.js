@@ -32,11 +32,12 @@ function scoreSystem() {
   pop();
   //health bar
   push();
-
   let healthBoxX = camera.position.x - 500, healthBoxY = camera.position.y - 300;
   let healthBoxW = 200, healthBoxH = 15;
+  healthFace.resize(70,70)
+  image(healthFace, healthBoxX-85, healthBoxY- 25)
   noStroke();
-  fill(255, 0, 0);
+  fill("green");
   rect(healthBoxX, healthBoxY,
     map(player.health, 0, player.maxHealth, 0, healthBoxW), healthBoxH);
   stroke(0);
@@ -53,4 +54,5 @@ function scoreSystem() {
   textAlign(LEFT);
   text("HEALTH:" + player.health, healthTextX, healthTextY);
   pop();
+  
 }

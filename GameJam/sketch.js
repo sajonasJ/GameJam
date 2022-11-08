@@ -5,8 +5,8 @@ let enemyB = new MinionManagerB();
 let points = 0;
 
 ////////////////////////CURRENT SCREEN STATE CONTROL////////////////////////
-// let currentState = MAIN_MENU;
-let currentState = GAME_PLAY;
+ let currentState = MAIN_MENU;
+//let currentState = GAME_PLAY;
 // let currentState = CREDITS;
 // let currentState = SETTINGS;
 // let currentState = WIN;
@@ -30,6 +30,7 @@ function setup() {
 }
 function draw() {
   drawScreens();
+  
 }
 ////////////////////////////////////DRAW GAMEPLAY//////////////////////////////////////////
 function drawGamePlay() {
@@ -52,7 +53,7 @@ function drawGamePlay() {
   gamePlayButtons();
   ///////////////////////////////////////////TO SPRITES
   cloudx += .5; // moving clouds
-
+  
   drawSprites();
 }
 ///////////////////////////////NEEDS TO BE TRANSLATED TO SPRITES
