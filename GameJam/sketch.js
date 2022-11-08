@@ -29,10 +29,7 @@ function setup() {
   cloudy = random(50, 100);
 }
 function draw() {
-  image(background1, 0, 0);
-  image(background1, 1280, 0);
-  image(background1, 2560, 0);
-  image(background1, 3840, 0);
+ 
   drawScreens();
   
 }

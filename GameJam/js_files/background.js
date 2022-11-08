@@ -2,9 +2,14 @@
 function levelBackground() {
   for (let i = 0; i < 10; i++) {
     image(bgCity, 0 + 1279.8 * [i], 0);
-    image(background1, 0 + 1279.8*[i],0)
-    
   }
+  image(background1, 0+ scrollingCityDiff, 0);
+  image(background1, 1280 + scrollingCityDiff, 0);
+  image(background1, 2560+ scrollingCityDiff, 0);
+  image(background1, 3840+ scrollingCityDiff, 0);
+  scrollingCityDiff = player.sprite.position.x - player.sprite.previousPosition.x
+  console.log("difference is" + scrollingCityDiff)
+
   for (let i = 0; i < allSprites.length; i++) {
     let aSpr = allSprites[i];
     if (aSpr.position.x < 100) { aSpr.velocity.x *= 0; aSpr.position.x = 100; }
