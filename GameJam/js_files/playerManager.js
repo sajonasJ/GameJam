@@ -15,8 +15,9 @@ class PlayerManager {
     constructor() {
         this.sprite;
         this.group;
-        this.health=40;
-        this.maxHealth=100;
+        this.health = 40;
+        this.maxHealth = 100;
+        this.punchSprite;
 
     }
     preload() {//preload
@@ -31,7 +32,7 @@ class PlayerManager {
         idleAnim.frameDelay = 12;
         pAttackSprite = loadSpriteSheet("assets/images/player/playerAttack.png", 100, 100, 4)
         pAttack = loadAnimation(pAttackSprite);
-        pAttack.frameDelay = 4;
+        pAttack.frameDelay = 4;//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<HERE
         transform = loadSpriteSheet("assets/images/player/rage.png", 100, 100, 14)
         rage = loadAnimation(transform)
         rageSpr1 = loadSpriteSheet("assets/images/player/rage1.png", 80, 100, 6)//o
@@ -48,6 +49,7 @@ class PlayerManager {
         this.y = y;
         this.sprite = this.makePlayer(this.x, this.y);
         this.group = new Group();
+        this.punchSprite;
     }
 
     draw() {// going to run at draw
@@ -56,7 +58,6 @@ class PlayerManager {
         camera.position.y = this.sprite.position.y - 295;//CAMERA CONTROL Y
         camera.zoom = 1;
         this.keyPressed();
-        
     }
 
     makePlayer(x, y) { // createsprite
@@ -78,14 +79,13 @@ class PlayerManager {
     keyPressed() {
         let left = keyDown(LEFT_ARROW), a = keyDown('a')
         let right = keyDown(RIGHT_ARROW), d = keyDown('d');
-        let space = keyWentDown(32);
+        let space = keyDown(32);
         let p = keyDown(80), o = keyDown(79), i = keyDown(73);
         //LOGIC
         if (left || a) {
             this.sprite.velocity.x = -5;
             this.sprite.changeAnimation("runningLeft")
-        }
-        else if (right || d) {
+        } else if (right || d) {
             this.sprite.velocity.x = +5;
             this.sprite.changeAnimation("running")
         } else if (space) {
@@ -102,11 +102,11 @@ class PlayerManager {
         }
         if (i) {
             this.sprite.changeAnimation("transform2")
-        }
+        } 
     }
 
-    attackSprite() {
-        let tempAttack = createSprite(this.sprite.position.x + 20, this.sprite.position.y,60,100);
+    attackSprite() {//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<HERE
+        let tempAttack = createSprite(this.sprite.position.x + 20, this.sprite.position.y, 60, 100);
         tempAttack.setCollider("rectangle", 0, 0, 50, 100);
         tempAttack.debug = true;
         tempAttack.life = 5;

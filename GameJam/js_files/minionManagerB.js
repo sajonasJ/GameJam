@@ -2,10 +2,10 @@ let enemyWalkSheetB, enemyAnimB;
 class MinionManagerB {
     constructor() {
         this.group;
-        this.walkSpeed=2;
-        this.leftDirection=180;
-        this.health=100;
-        this.maxHealth=100;
+        this.walkSpeed = 2;
+        this.leftDirection = 180;
+        this.health = 100;
+        this.maxHealth = 100;
         this.sprite;
     }
 
@@ -15,12 +15,12 @@ class MinionManagerB {
         enemyAnimB.frameDelay = 4;
     }
 
-    setup(x,y) {
-        this.group=new Group();
-        this.x=x;
-        this.y=y;
+    setup(x, y) {
+        this.group = new Group();
+        this.x = x;
+        this.y = y;
         // this.group.add(this.makeMinionB(this.x, this.y));
-        this.sprite = this.makeMinionB(this.x,this.y);
+        this.sprite = this.makeMinionB(this.x, this.y);
     }
 
     draw() {
@@ -32,29 +32,34 @@ class MinionManagerB {
         minionB.setCollider("rectangle", 0, 0, 50, 50);
         minionB.addAnimation("walk", enemyAnimB);
         minionB.setSpeed(this.walkSpeed, this.leftDirection);
-        minionB.mass=10;
+        minionB.mass = 10;
         // minionB.friction = 0.25;
-        minionB.debug=true;
+        minionB.debug = true;
         this.group.add(minionB);
+        minionB.maxHp = 100
+        minionB.hp = 100
         return minionB
     }
     createHealthBar() {//healthbar
         push();
-        let healthBoxX = this.sprite.position.x-25;
-        let healthBoxY = this.sprite.position.y-40;
-        let boxWidth=50,boxHeight=8;
-        noStroke();
-        fill(255, 0, 0);
-        rect(healthBoxX,healthBoxY,
-             map(this.health, 0, this.maxHealth, 0, boxWidth), boxHeight);
-             //health=0 to max=100 length 200;red
-        stroke(0);
-        strokeWeight(2);
-        noFill(0);
-        rect(healthBoxX,healthBoxY, boxWidth,boxHeight);//healthsize x,y + boxsize x,y
+        for (let enemy of this.group) {
+            console.log("HP IS", enemy.hp)
+            console.log("MAX HP IS", enemy.maxHp)
+            let healthBoxX = this.sprite.position.x - 25;
+            let healthBoxY = this.sprite.position.y - 40;
+            let boxWidth = 50, boxHeight = 8;
+
+            noStroke();
+            fill(255, 0, 0);
+            rect(healthBoxX, healthBoxY,
+                map(enemy.hp, 0, enemy.maxHp, 0, boxWidth), boxHeight);
+
+            stroke(0);
+            strokeWeight(2);
+            noFill(0);
+            rect(healthBoxX, healthBoxY, boxWidth, boxHeight);
+
+        }
         pop();
-    
-        
-     
     }
 }

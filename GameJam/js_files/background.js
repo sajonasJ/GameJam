@@ -9,9 +9,8 @@
   let bgSky4 = 3840;
 
 function levelBackground() {
-  //for (let i = 0; i < 10; i++) {
-    //image(bgCity, 0 + 1279.8 * [i], 0);
-  //}
+
+  
   image(bgCity, bgSky1, 0);
   image(bgCity, bgSky2, 0);
   image(bgCity, bgSky3, 0);
@@ -23,7 +22,6 @@ function levelBackground() {
   image(background1, bg4Start , 0);
   
   scrollingCityDiff = player.sprite.position.x - player.sprite.previousPosition.x
-  console.log("difference is" + scrollingCityDiff)
   bg1Start += (scrollingCityDiff * 0.3)
   bg2Start += (scrollingCityDiff * 0.3) 
   bg3Start += (scrollingCityDiff * 0.3) 
@@ -88,7 +86,6 @@ function scoreSystem() {
   rect(healthBoxX+90, healthBoxY,
     map(player.health, 0, player.maxHealth, 0, healthBoxW), healthBoxH);
   pop();
-
 
 
   push();
