@@ -9,6 +9,7 @@ let pAttackSprite;
 let transform, rage;
 let rage1, rageSpr1;
 let rage2, rageSpr2;
+let scrollingCityDiff;
 
 class PlayerManager {
     constructor() {
@@ -55,7 +56,8 @@ class PlayerManager {
         camera.position.y = this.sprite.position.y - 295;//CAMERA CONTROL Y
         camera.zoom = 1;
         this.keyPressed();
-
+        scrollingCityDiff = this.sprite.position.x - this.sprite.previousPosition.x
+        console.log("here" + scrollingCityDiff)
     }
 
     makePlayer(x, y) { // createsprite
