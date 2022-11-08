@@ -1,14 +1,39 @@
+  let bg1Start = 0;
+  let bg2Start = 1280;
+  let bg3Start = 2560;
+  let bg4Start = 3840;
+
+  let bgSky1 = 0;
+  let bgSky2 = 1280;
+  let bgSky3 = 2560;
+  let bgSky4 = 3840;
 
 function levelBackground() {
-  for (let i = 0; i < 10; i++) {
-    image(bgCity, 0 + 1279.8 * [i], 0);
-  }
-  image(background1, 0 + scrollingCityDiff, 0);
-  image(background1, 1280 + scrollingCityDiff, 0);
-  image(background1, 2560 + scrollingCityDiff, 0);
-  image(background1, 3840 + scrollingCityDiff, 0);
+  //for (let i = 0; i < 10; i++) {
+    //image(bgCity, 0 + 1279.8 * [i], 0);
+  //}
+  image(bgCity, bgSky1, 0);
+  image(bgCity, bgSky2, 0);
+  image(bgCity, bgSky3, 0);
+  image(bgCity, bgSky4, 0);
+
+  image(background1, bg1Start, 0);
+  image(background1, bg2Start, 0);
+  image(background1, bg3Start, 0);
+  image(background1, bg4Start , 0);
+  
   scrollingCityDiff = player.sprite.position.x - player.sprite.previousPosition.x
-  // console.log("difference is" + scrollingCityDiff)
+  console.log("difference is" + scrollingCityDiff)
+  bg1Start += (scrollingCityDiff * 0.3)
+  bg2Start += (scrollingCityDiff * 0.3) 
+  bg3Start += (scrollingCityDiff * 0.3) 
+  bg4Start += (scrollingCityDiff * 0.3)
+
+  bgSky1 += (scrollingCityDiff * 0.7)
+  bgSky2 += (scrollingCityDiff * 0.7) 
+  bgSky3 += (scrollingCityDiff * 0.7) 
+  bgSky4 += (scrollingCityDiff * 0.7)
+
 
   for (let i = 0; i < allSprites.length; i++) {
     let aSpr = allSprites[i];
