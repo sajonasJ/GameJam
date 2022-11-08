@@ -15,7 +15,7 @@ class PlayerManager {
     constructor() {
         this.sprite;
         this.group;
-        this.health=100;
+        this.health=40;
         this.maxHealth=100;
 
     }
@@ -38,7 +38,7 @@ class PlayerManager {
         rage1 = loadAnimation(rageSpr1)
         rageSpr2 = loadSpriteSheet("assets/images/player/rage2.png", 80, 100, 6)//i
         rage2 = loadAnimation(rageSpr2)
-        rage.frameDelay = 12;
+        rage.frameDelay = 4;
         rage1.frameDelay = 4;
         rage2.frameDelay = 4;
     }
@@ -79,7 +79,7 @@ class PlayerManager {
     keyPressed() {
         let left = keyDown(LEFT_ARROW), a = keyDown('a')
         let right = keyDown(RIGHT_ARROW), d = keyDown('d');
-        let space = keyDown(32);
+        let space = keyWentDown(32);
         let p = keyDown(80), o = keyDown(79), i = keyDown(73);
         //LOGIC
         if (left || a) {
@@ -106,13 +106,12 @@ class PlayerManager {
         }
     }
 
-
     attackSprite() {
-        let tempAttack = createSprite(this.sprite.position.x + 20, this.sprite.position.y);
-        tempAttack.setCollider("rectangle", 0, 0, 120, 100);
+        let tempAttack = createSprite(this.sprite.position.x + 20, this.sprite.position.y,60,100);
+        tempAttack.setCollider("rectangle", 0, 0, 50, 100);
         tempAttack.debug = true;
         tempAttack.life = 5;
-        tempAttack.visible = true;
+        tempAttack.visible = false;
         this.group.add(tempAttack);
         return tempAttack;
     }

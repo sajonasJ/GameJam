@@ -6,7 +6,6 @@ const LOSE = 4;
 const WIN = 5;
 
 function drawScreens() {
- 
   if (currentState == MAIN_MENU) {
     drawMainMenu();
   } else if (currentState == GAME_PLAY) {

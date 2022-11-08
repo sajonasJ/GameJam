@@ -6,8 +6,10 @@ let creditsButtonIMG;
 let settingsBackground;
 let background1;
 let playButton, creditsButton, settingsButton, returnButton;
-let heatlhFace, bgCity;
+let heatlhFace, bgCity, griffin;
+
 function assetPreload() {
+    griffin = loadImage("assets/images/pixelator.png");
     background1 = loadImage("assets/images/background1280x720noCity.png.png");
     font = loadFont("fonts/joystix monospace.ttf");
     mainMenuBG = loadImage("assets/images/mainMenuBG.png");
@@ -21,5 +23,4 @@ function assetPreload() {
     creditsButton = createImg("assets/images/creditsButton.png")
     healthFace = loadImage("assets/images/healthFace.png")
     bgCity = loadImage("assets/images/cityBG.png")
-    
 }

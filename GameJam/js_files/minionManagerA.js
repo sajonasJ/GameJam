@@ -4,7 +4,7 @@ class MinionManagerA {
         this.group;
         this.walkSpeed=2;
         this.leftDirection=180;
-        this.health=100;
+        this.health=60;
         this.maxHealth=100;
         this.sprite;
     }
@@ -23,7 +23,7 @@ class MinionManagerA {
         this.sprite = this.makeMinionA(this.x,this.y);
     }
 
-    draw() { 
+    draw() {
         this.createHealthBar();
     }
 
@@ -38,11 +38,13 @@ class MinionManagerA {
         this.group.add(minionA);
         return minionA
     }
+
     createHealthBar() {//healthbar
         push();
         let healthBoxX = this.sprite.position.x-25;
         let healthBoxY = this.sprite.position.y-40;
         let boxWidth=50,boxHeight=8;
+
         noStroke();
         fill(255, 0, 0);
         rect(healthBoxX,healthBoxY,
@@ -50,11 +52,9 @@ class MinionManagerA {
              //health=0 to max=100 length 200;red
         stroke(0);
         strokeWeight(2);
-        noFill(0);
+        noFill();
         rect(healthBoxX,healthBoxY, boxWidth,boxHeight);//healthsize x,y + boxsize x,y
         pop();
-    
-        
-     
+
     }
 }
