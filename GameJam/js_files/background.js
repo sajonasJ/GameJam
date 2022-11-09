@@ -18,7 +18,7 @@ function levelBackground() {
   image(bgCity, bgSky4, 0);
 
   image(background1, bg1Start, 0);
-  image(background1, bg2Start, 0);
+  image(background2, bg2Start, 0);
   image(background1, bg3Start, 0);
   image(background1, bg4Start , 0);
   
