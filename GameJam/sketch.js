@@ -5,8 +5,8 @@ let enemyB = new MinionManagerB();
 let points = 0;
 
 ////////////////////////CURRENT SCREEN STATE CONTROL////////////////////////
-//let currentState = MAIN_MENU;
-let currentState = GAME_PLAY;
+let currentState = MAIN_MENU;
+// let currentState = GAME_PLAY;
 // let currentState = CREDITS;
 // let currentState = SETTINGS;
 // let currentState = WIN;
@@ -63,8 +63,6 @@ drawSprites();
 
 function playerHitEnemy(punch, enemy) {
   points += 100;
-  text(points,enemyA.position.x, tempAttack.position.y);
-  // enemy.remove();
   textSize(30);
   strokeWeight(4);
   fill('red');
