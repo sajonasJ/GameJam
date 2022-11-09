@@ -18,8 +18,8 @@ function levelBackground() {
 
   image(background1, bg1Start, 0);
   image(background2, bg2Start, 0);
-  image(background1, bg3Start, 0);
-  image(background1, bg4Start , 0);
+  image(background3, bg3Start, 0);
+  image(background3, bg4Start , 0);
   
   scrollingCityDiff = player.sprite.position.x - player.sprite.previousPosition.x
   bg1Start += (scrollingCityDiff * 0.3)
