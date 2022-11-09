@@ -5,13 +5,12 @@ let enemyB = new MinionManagerB();
 let points = 0;
 
 ////////////////////////CURRENT SCREEN STATE CONTROL////////////////////////
-let currentState = MAIN_MENU;
-// let currentState = GAME_PLAY;
+// let currentState = MAIN_MENU;
+let currentState = GAME_PLAY;
 // let currentState = CREDITS;
 // let currentState = SETTINGS;
 // let currentState = WIN;
 // let currentState = LOSE;
-
 function preload() {
   assetPreload();
   player.preload();
@@ -46,30 +45,34 @@ function drawGamePlay() {
 
 
 
-// console.log(frameCount);
+  // console.log(frameCount);
 
-player.draw();
-enemyA.draw();
-enemyB.draw();
-player.sprite.displace(enemyA.group, enemyHitPlayer);
-player.sprite.displace(enemyB.group, enemyHitPlayer);
-player.group.displace(enemyA.group, playerHitEnemy);
-player.group.displace(enemyB.group, playerHitEnemy);
-gamePlayButtons();
+  player.draw();
+  enemyA.draw();
+  enemyB.draw();
+  player.sprite.displace(enemyA.group, enemyHitPlayer);
+  player.sprite.displace(enemyB.group, enemyHitPlayer);
+  player.group.displace(enemyA.group, playerHitEnemy);
+  player.group.displace(enemyB.group, playerHitEnemy);
+  gamePlayButtons();
 
-drawSprites();
+  drawSprites();
   // console.log(player.sprite.position.x);
 }
 
 function playerHitEnemy(punch, enemy) {
+  push();
   points += 100;
-  textSize(30);
-  strokeWeight(4);
+  textSize(24);
+  textFont(font);
+  textStyle(BOLD);
   fill('red');
-  // text( points, player.group.position.x, player.group.position.y);//<<<<<<<<<<<<<<<<<<<<<
+  textAlign(CENTER);
+  text(points, player.sprite.position.x + 20, player.sprite.position.y - 50);//<<<<<<<<<<<<<<<<<<<<<
   enemy.hp--;
-  if( enemy.hp<1){
+  if (enemy.hp < 1) {
     enemy.remove();
+    pop();
   }
 }
 function enemyHitPlayer(enemy, player) {

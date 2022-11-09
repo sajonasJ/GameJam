@@ -75,14 +75,14 @@ function scoreSystem() {
   push();
   stroke(0);
   strokeWeight(4);
-  fill('red');
+  fill('green');
   rect(healthBoxX+90, healthBoxY, healthBoxW, healthBoxH);//rectbox
   pop();
 
   push();
   stroke(0);
   strokeWeight(4);
-  fill("green");
+  fill(155, 34, 38);
   rect(healthBoxX+90, healthBoxY,
     map(player.health, 0, player.maxHealth, 0, healthBoxW), healthBoxH);
   pop();
@@ -93,6 +93,7 @@ function scoreSystem() {
   fill(0);
   stroke(2);
   textSize(24);
+  textFont(font);
   textAlign(LEFT);
   text("HEALTH:" + player.health, healthTextX, healthTextY);
   pop();
@@ -101,6 +102,7 @@ function scoreSystem() {
   fill(0);
   stroke(0);
   textSize(24);
+  textFont(font);
   textAlign(LEFT);
   text('SCORE:' + points, textOffSetX, textOffsetY);
   pop();

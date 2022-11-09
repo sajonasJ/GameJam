@@ -2,12 +2,9 @@ let enemyWalkSheetA, enemyAnimA;
 class MinionManagerA {
     constructor() {
         this.group;
-        this.walkSpeed = 2;
-        this.leftDirection = 180;
-        this.health = 60;//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<here
+        this.health = 60;
         this.maxHealth = 100;
         this.sprite;
-
     }
 
     preload() {
@@ -20,7 +17,6 @@ class MinionManagerA {
         this.group = new Group();
         this.x = x;
         this.y = y;
-        // this.group.add(this.makeMinionA(this.x, this.y));
         this.sprite = this.makeMinionA(this.x, this.y);
     }
 
@@ -29,12 +25,13 @@ class MinionManagerA {
     }
 
     makeMinionA(x, y) {
+        let walkSpeed = 2;
+        let leftDirection = 180;
         let minionA = createSprite(x, y);
         minionA.setCollider("rectangle", 0, 0, 50, 50);
         minionA.addAnimation("walk", enemyAnimA);
-        minionA.setSpeed(this.walkSpeed, this.leftDirection);
+        minionA.setSpeed(walkSpeed, leftDirection);
         minionA.mass = 10;
-        //  minionA.friction = 0.25;
         minionA.debug = true;
         minionA.maxHp = 100
         minionA.hp = 100
@@ -42,26 +39,24 @@ class MinionManagerA {
         return minionA
     }
 
-    createHealthBar() {//healthbar
+    createHealthBar() {
         push();
+        //tracker hp.box
         for (let enemy of this.group) {
-            console.log("HP IS", enemy.hp)
-            console.log("MAX HP IS", enemy.maxHp)
             let healthBoxX = enemy.position.x - 25;
             let healthBoxY = enemy.position.y - 40;
             let boxWidth = 50, boxHeight = 8;
-
+            //HEALTH MAPPED
             noStroke();
             fill(255, 0, 0);
             rect(healthBoxX, healthBoxY,
                 map(enemy.hp, 0, enemy.maxHp, 0, boxWidth), boxHeight);
+            //OUTSIDE RECTBOX
             stroke(0);
             strokeWeight(2);
             noFill();
-            rect(healthBoxX, healthBoxY, boxWidth, boxHeight);//healthsize x,y + boxsize x,y
-
+            rect(healthBoxX, healthBoxY, boxWidth, boxHeight);
         }
         pop();
-
     }
 }

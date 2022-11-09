@@ -17,7 +17,6 @@ class PlayerManager {
         this.group;
         this.health = 40;
         this.maxHealth = 100;
-        this.punchSprite;
 
     }
     preload() {//preload
@@ -32,7 +31,7 @@ class PlayerManager {
         idleAnim.frameDelay = 12;
         pAttackSprite = loadSpriteSheet("assets/images/player/playerAttack.png", 100, 100, 4)
         pAttack = loadAnimation(pAttackSprite);
-        pAttack.frameDelay = 4;//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<HERE
+        pAttack.frameDelay = 4;
         transform = loadSpriteSheet("assets/images/player/rage.png", 100, 100, 14)
         rage = loadAnimation(transform)
         rageSpr1 = loadSpriteSheet("assets/images/player/rage1.png", 80, 100, 6)//o
@@ -49,7 +48,6 @@ class PlayerManager {
         this.y = y;
         this.sprite = this.makePlayer(this.x, this.y);
         this.group = new Group();
-        this.punchSprite;
     }
 
     draw() {// going to run at draw
