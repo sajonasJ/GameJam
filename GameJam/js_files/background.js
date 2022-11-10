@@ -55,7 +55,7 @@ function scoreSystem() {
   fill(233, 196, 106);
   rect(boxOffsetX - 10, BoxOffsetY - 10, 450, 120);
   pop();
-// border rect
+  // border rect
   push();
   stroke(0);
   strokeWeight(4);
@@ -66,6 +66,7 @@ function scoreSystem() {
 
   //health bar
   push();
+
   let healthBoxX = camera.position.x - 470, healthBoxY = camera.position.y - 300;
   let healthBoxW = 200, healthBoxH = 15;
   griffin.resize(430, 100);
@@ -73,7 +74,7 @@ function scoreSystem() {
   healthFace.resize(70, 70);
   image(healthFace, healthBoxX, healthBoxY - 25);
   pop();
-
+  console.log(healthBoxX)
   push();
   stroke(0);
   strokeWeight(4);
@@ -89,6 +90,16 @@ function scoreSystem() {
     map(player.health, 0, player.maxHealth, 0, healthBoxW), healthBoxH);
   pop();
 
+  push();
+  stroke(0);
+  strokeWeight(4);
+  noFill();
+  rect(healthBoxX + 110, healthBoxY, healthBoxW-40, healthBoxH);//rectbox
+  rect(healthBoxX + 130, healthBoxY, healthBoxW-80, healthBoxH);//rectbox
+  rect(healthBoxX + 150, healthBoxY, healthBoxW-120, healthBoxH);//rectbox
+  rect(healthBoxX + 170, healthBoxY, healthBoxW-160, healthBoxH);//rectbox
+  line(healthBoxX +190, healthBoxY,healthBoxX+190,healthBoxY+15);
+  pop();
 
   push();
   //health text
@@ -113,6 +124,6 @@ function scoreSystem() {
 
 function remakeClouds() {
   if (clouds.cloudNum <= 6) {
-    clouds.setup(camera.position.x + 400, random( 100,250));
+    clouds.setup(camera.position.x + 400, random(100, 250));
   }
 }
