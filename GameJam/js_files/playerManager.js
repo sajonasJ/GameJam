@@ -77,15 +77,23 @@ class PlayerManager {
     keyPressed() {
         let left = keyDown(LEFT_ARROW), a = keyDown('a')
         let right = keyDown(RIGHT_ARROW), d = keyDown('d');
-        let space = keyDown(32);
+        let space = keyDown(32), ctrl = keyDown(17);
         let p = keyDown(80), o = keyDown(79), i = keyDown(73);
         //LOGIC
         if (left || a) {
-            this.sprite.velocity.x = -5;
             this.sprite.changeAnimation("runningLeft")
+            if (ctrl) {
+                this.sprite.velocity.x = -10;
+            } else {
+                this.sprite.velocity.x = -5;
+            }
         } else if (right || d) {
-            this.sprite.velocity.x = +5;
             this.sprite.changeAnimation("running")
+            if (ctrl) {
+                this.sprite.velocity.x = +10;
+            } else {
+                this.sprite.velocity.x = +5;
+            }
         } else if (space) {
             this.sprite.changeAnimation("attack")
             this.attackSprite();
@@ -100,7 +108,8 @@ class PlayerManager {
         }
         if (i) {
             this.sprite.changeAnimation("transform2")
-        } 
+        }
+
     }
 
     attackSprite() {//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<HERE

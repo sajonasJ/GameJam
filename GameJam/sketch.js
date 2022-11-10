@@ -63,17 +63,20 @@ function drawGamePlay() {
 function playerHitEnemy(punch, enemy) {
   push();
   points += 100;
-  textSize(24);
+  textSize(30);
+  stroke(0);
+  strokeWeight(3);
   textFont(font);
   textStyle(BOLD);
   fill('red');
   textAlign(CENTER);
-  text(points, player.sprite.position.x + 20, player.sprite.position.y - 50);//<<<<<<<<<<<<<<<<<<<<<
+  text(points, player.sprite.position.x + 30, player.sprite.position.y - 50);//<<<<<<<<<<<<<<<<<<<<<
   enemy.hp--;
   if (enemy.hp < 1) {
     enemy.remove();
-    pop();
+   
   }
+  pop();
 }
 function enemyHitPlayer(enemy, player) {
   player.health = -20;
