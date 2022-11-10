@@ -35,18 +35,11 @@ function levelBackground() {
 
   for (let i = 0; i < allSprites.length; i++) {
     let aSpr = allSprites[i];
-    
     if (aSpr.position.x < 100) {
       aSpr.velocity.x *= 0; aSpr.position.x = 100;
     }
     if (aSpr.position.x > 12800) {
       aSpr.velocity.x *= 0; aSpr.position.x = 1280;
-    }
-    if (aSpr.position.y < 400) {
-      aSpr.velocity.y *= 0; aSpr.position.y = 400;
-    }
-    if (aSpr.position.y > height - 25) {
-      aSpr.velocity.y *= 0; aSpr.position.y = height - 25;
     }
   }
 }
@@ -55,14 +48,14 @@ function scoreSystem() {
   let boxOffsetX = camera.position.x - 600, BoxOffsetY = camera.position.y - 340;
   let healthTextX = camera.position.x - 380, healthTextY = camera.position.y - 310;
 
-  //rect
+  //beige rect
   push();
   stroke(0);
   strokeWeight(4);
   fill(233, 196, 106);
   rect(boxOffsetX - 10, BoxOffsetY - 10, 450, 120);
   pop();
-
+// border rect
   push();
   stroke(0);
   strokeWeight(4);

@@ -5,6 +5,7 @@ class MinionManagerA {
         this.health = 60;
         this.maxHealth = 100;
         this.sprite;
+        this.minionANum=0;
     }
 
     preload() {
@@ -36,6 +37,7 @@ class MinionManagerA {
         minionA.maxHp = 100
         minionA.hp = 100
         this.group.add(minionA);
+        this.minionANum+=1;
         return minionA
     }
 
