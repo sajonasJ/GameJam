@@ -3,6 +3,8 @@ let player = new PlayerManager();
 let enemyA = new MinionManagerA();
 let enemyB = new MinionManagerB();
 let clouds = new CloudManager();
+let brownDog = new DogManager();
+let blackBird = new RightBirdManager();
 let points = 0;
 let ground = 650;
 
@@ -19,13 +21,17 @@ function preload() {
   enemyA.preload();
   enemyB.preload();
   clouds.preload();
+  brownDog.preload();
+  blackBird.preload();
 }
 function setup() {
   createCanvas(1280, 720);
+  brownDog.setup(120, ground + 35);
   player.setup(100, ground);
   enemyA.setup(1800, ground);
   enemyB.setup(1300, ground);
   clouds.setup(0, 100);
+  blackBird.setup(camera.position.x + 1200, 560);
 
   buttonManager();
   sliderManager();
@@ -38,7 +44,8 @@ function drawGamePlay() {
   background(0);
   levelBackground();
   scoreSystem();
-
+  brownDog.draw();
+  blackBird.draw();
   player.draw();
   enemyA.draw();
   enemyB.draw();
@@ -49,12 +56,11 @@ function drawGamePlay() {
   player.group.displace(enemyB.group, playerHitEnemy);
   gamePlayButtons();
   drawSprites();
-  remakeClouds();
-  remakeEnemy();
-  console.log("number of enemies: "+enemyA.minionANum);
+  reSpawner();
+
 }
 ////////////////////////////////FREE FOR ALL FUNCTIONS//////////////////
-function playerHitEnemy(punch, enemy) {
+function playerHitEnemy(punch, enemies) {
   push();
   points += 100;
   textSize(30);
@@ -65,24 +71,51 @@ function playerHitEnemy(punch, enemy) {
   fill('red');
   textAlign(CENTER);
   text(20 + "!", player.sprite.position.x + 30, player.sprite.position.y - 50);//<<<<<<<<<<<<<<<<<<<<<
-  enemy.hp-=20;
-  if (enemy.hp < 1) {
-    enemy.remove();
+  pop();
+  push();
+  enemies.hp -= 20;
+  if (enemies.hp < 1) {
+    enemies.remove();
     enemyA.minionANum--;
+    // enemyA.group.changeAnimation('die');
   }
   pop();
+  push();
+  enemies.hp -= 20;
+  if (enemies.hp < 1) {
+    enemies.remove();
+    enemyB.minionBNum--;
+  }
+  pop();
+  // console.log("number of enemiesA: "+enemyA.minionANum);
+  // console.log("number of enemiesB: "+enemyB.minionBNum);
 }
 
-function remakeClouds() {
-  if (clouds.cloudNum <= 6) {
-    clouds.setup(camera.position.x + 400, 100);
+
+
+function reSpawner() {
+  remakeClouds();
+  remakeEnemyA();
+  remakeEnemyB();
+  remakeBlackBird();
+}
+
+function remakeEnemyA() {
+  if (enemyA.minionANum <= 0) {
+    enemyA.makeMinionA(camera.position.x + 1000, ground);
+    // enemyA.makeMinionA(camera.position.x+1800, ground);
+    console.log("number of enemiesA: " + enemyA.minionANum);
+  }
+}
+function remakeEnemyB() {
+  if (enemyB.minionBNum < 0) {
+    enemyB.makeMinionB(camera.position.x + 800, ground);
+    enemyB.minionBNum++;
   }
 }
 
-function remakeEnemy() {
-  if (enemyA.minionANum <= 0) {
-    enemyA.makeMinionA(camera.position.x+1000, ground);
-    // enemyA.minionANum++;
-    console.log("number of enemies: "+enemyA.minionANum);
+function remakeBlackBird() {
+  if (blackBird.birdNum <= 0) {
+    blackBird.setup(camera.position.x + 1000, random(300, 600));
   }
 }

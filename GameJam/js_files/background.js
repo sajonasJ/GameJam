@@ -110,3 +110,9 @@ function scoreSystem() {
   pop();
 
 }
+
+function remakeClouds() {
+  if (clouds.cloudNum <= 6) {
+    clouds.setup(camera.position.x + 400, random( 100,250));
+  }
+}

@@ -1,19 +1,23 @@
 let enemyWalkSheetA, enemyAnimA;
+let enemyDieSheetA, enemyDieA;
 class MinionManagerA {
     constructor() {
         this.group;
         this.health = 60;
         this.maxHealth = 100;
         this.sprite;
-        this.minionANum=0;
+        this.minionANum = 0;
     }
 
     preload() {
         enemyWalkSheetA = loadSpriteSheet("assets/images/enemy/EnemyA1.png", 100, 100, 4);
+        enemyDieSheetA = loadSpriteSheet("assets/images/enemy/EnemyA3.png", 100, 100, 4);
         enemyAnimA = loadAnimation(enemyWalkSheetA);
+        enemyDieA = loadAnimation(enemyDieSheetA);
         enemyAnimA.frameDelay = 4;
+        enemyDieA.frameDelay=100;// not working
+        
     }
-
     setup(x, y) {
         this.group = new Group();
         this.x = x;
@@ -23,6 +27,7 @@ class MinionManagerA {
 
     draw() {
         this.createHealthBar();
+        this.dieOff();
     }
 
     makeMinionA(x, y) {
@@ -31,16 +36,16 @@ class MinionManagerA {
         let minionA = createSprite(x, y);
         minionA.setCollider("rectangle", 0, 0, 50, 50);
         minionA.addAnimation("walk", enemyAnimA);
+        minionA.addAnimation("die", enemyDieA);
         minionA.setSpeed(walkSpeed, leftDirection);
         minionA.mass = 10;
         minionA.debug = true;
         minionA.maxHp = 100
         minionA.hp = 100
         this.group.add(minionA);
-        this.minionANum+=1;
+        this.minionANum += 1;
         return minionA
     }
-
     createHealthBar() {
         push();
         //tracker hp.box
@@ -60,5 +65,10 @@ class MinionManagerA {
             rect(healthBoxX, healthBoxY, boxWidth, boxHeight);
         }
         pop();
+    }
+    dieOff(){
+        if(this.sprite.hp<0){
+            this.sprite.changeAnimation('die');
+        }
     }
 }

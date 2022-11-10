@@ -7,11 +7,13 @@ class CloudManager {
         this.group;
         this.cloudNum = 0;
     }
+
     preload() {
-        clouds1 = loadImage("assets/images/cloud1.png");
-        clouds2 = loadImage("assets/images/cloud2.png");
-        clouds3 = loadImage("assets/images/cloud3.png");
+        clouds1 = loadImage("assets/images/clouds/cloud1.png");
+        clouds2 = loadImage("assets/images/clouds/cloud2.png");
+        clouds3 = loadImage("assets/images/clouds/cloud3.png");
     }
+
     setup(x, y) {
         this.group = new Group();
         this.x = x;
@@ -19,18 +21,15 @@ class CloudManager {
         this.spriteA = this.makeCloudA(this.x + 300, this.y + 70);
         this.spriteB = this.makeCloudB(this.x, this.y + 100);
         this.spriteC = this.makeCloudC(this.x, this.y + 160);
-
     }
 
-    draw(x, y) {
-        // console.log(frameCount);
+    draw( ) {
         this.makeCloudMoveA();
         this.makeCloudMoveB();
         this.makeCloudMoveC();
         this.cloudCleanUp();
-
-
     }
+
     makeCloudA(x, y) {
         let tempCloudA = createSprite(x, y);
         tempCloudA.scale = 3;
@@ -39,6 +38,7 @@ class CloudManager {
         this.cloudNum++;
         return tempCloudA;
     }
+
     makeCloudB(x, y) {
         let tempCloudB = createSprite(x, y);
         tempCloudB.scale = 3;
@@ -46,8 +46,8 @@ class CloudManager {
         this.group.add(tempCloudB);
         this.cloudNum++;
         return tempCloudB;
-
     }
+
     makeCloudC(x, y) {
         let tempCloudC = createSprite(x, y);
         tempCloudC.scale = 3;
@@ -56,18 +56,10 @@ class CloudManager {
         this.cloudNum++;
         return tempCloudC;
     }
-    makeCloudMoveA() {
-        this.spriteA.setSpeed(.3, 0);
-    }
-    makeCloudMoveB() {
-        this.spriteB.setSpeed(.5, 0);
-    }
-    makeCloudMoveC() {
-        this.spriteC.setSpeed(.7, 0);
-    }
-    cloudMaker() {
 
-    }
+    makeCloudMoveA() { this.spriteA.setSpeed(.3, 0); }
+    makeCloudMoveB() { this.spriteB.setSpeed(.5, 0); }
+    makeCloudMoveC() { this.spriteC.setSpeed(.7, 0); }
 
     cloudCleanUp() {
         for (let cloud of this.group) {
@@ -78,4 +70,4 @@ class CloudManager {
             }
         }
     }
-}d
+}

@@ -5,6 +5,7 @@ class MinionManagerB {
         this.health = 100;
         this.maxHealth = 100;
         this.sprite;
+        this.minionBNum = 0;
     }
 
     preload() {
@@ -12,7 +13,6 @@ class MinionManagerB {
         enemyAnimB = loadAnimation(enemyWalkSheetB)
         enemyAnimB.frameDelay = 4;
     }
-
     setup(x, y) {
         this.group = new Group();
         this.x = x;
@@ -26,7 +26,7 @@ class MinionManagerB {
 
     makeMinionB(x, y) {
         let leftDirection = 180;
-        let walkSpeed = 2;;
+        let walkSpeed = 1.3;;
         let minionB = createSprite(x, y, 50, 50);
         minionB.setCollider("rectangle", 0, 0, 50, 50);
         minionB.addAnimation("walk", enemyAnimB);
@@ -36,12 +36,13 @@ class MinionManagerB {
         minionB.maxHp = 100
         minionB.hp = 100
         this.group.add(minionB);
+        this.minionBNum += 1;
         return minionB
     }
     createHealthBar() {
         push();
         //tracker hp.box
-        for (let enemy of this.group) {
+        for (let enemyBN of this.group) {
             let healthBoxX = this.sprite.position.x - 25;
             let healthBoxY = this.sprite.position.y - 40;
             let boxWidth = 50, boxHeight = 8;
@@ -49,11 +50,11 @@ class MinionManagerB {
             noStroke();
             fill(255, 0, 0);
             rect(healthBoxX, healthBoxY,
-                map(enemy.hp, 0, enemy.maxHp, 0, boxWidth), boxHeight);
+                map(enemyBN.hp, 0, enemyBN.maxHp, 0, boxWidth), boxHeight);
             //OUTSIDE RECTBOX
             stroke(0);
             strokeWeight(2);
-            noFill(0);
+            noFill();
             rect(healthBoxX, healthBoxY, boxWidth, boxHeight);
         }
         pop();

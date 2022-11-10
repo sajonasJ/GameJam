@@ -21,15 +21,7 @@ function drawScreens() {
   }
 }
 
-function viewCredits() {
-  currentState = CREDITS
-}
-function viewGame() {
-  currentState = GAME_PLAY
-}
-function viewSettings() {
-  currentState = SETTINGS
-}
-function viewMainMenu() {
-  currentState = MAIN_MENU
-}
+function viewCredits() { currentState = CREDITS }
+function viewGame() { currentState = GAME_PLAY }
+function viewSettings() { currentState = SETTINGS }
+function viewMainMenu() { currentState = MAIN_MENU }

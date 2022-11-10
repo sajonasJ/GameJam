@@ -77,7 +77,7 @@ class PlayerManager {
     keyPressed() {
         let left = keyDown(LEFT_ARROW), a = keyDown('a')
         let right = keyDown(RIGHT_ARROW), d = keyDown('d');
-        let space = keyWentDown(32), ctrl = keyDown(17);
+        let space = keyDown(32), ctrl = keyDown(17);
         let p = keyDown(80), o = keyDown(79), i = keyDown(73);
         //LOGIC
         if (left || a) {
@@ -112,7 +112,7 @@ class PlayerManager {
 
     }
 
-    attackSprite() {//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<HERE
+    attackSprite() {
         let tempAttack = createSprite(this.sprite.position.x + 20, this.sprite.position.y, 60, 100);
         tempAttack.setCollider("rectangle", 0, 0, 50, 100);
         tempAttack.debug = true;
