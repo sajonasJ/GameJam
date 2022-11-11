@@ -11,7 +11,7 @@ let ground = 650;
 
 ////////////////////////CURRENT SCREEN STATE CONTROL////////////////////////
 let currentState = MAIN_MENU;
-// let currentState = GAME_PLAY;
+//let currentState = GAME_PLAY;
 // let currentState = CREDITS;
 // let currentState = SETTINGS;
 // let currentState = WIN;

@@ -104,14 +104,14 @@ function scoreSystem() {
   push();
   stroke(0);
   strokeWeight(4);
-  fill('green');
+  fill('red');
   rect(healthBoxX + 90, healthBoxY, healthBoxW, healthBoxH);//rectbox
   pop();
 
   push();
   stroke(0);
   strokeWeight(4);
-  fill(155, 34, 38);
+  fill("green");
   rect(healthBoxX + 90, healthBoxY,
     map(player.health, 0, player.maxHealth, 0, healthBoxW), healthBoxH);
   pop();
