@@ -10,8 +10,8 @@ let points = 0;
 let ground = 650;
 
 ////////////////////////CURRENT SCREEN STATE CONTROL////////////////////////
-// let currentState = MAIN_MENU;
-let currentState = GAME_PLAY;
+let currentState = MAIN_MENU;
+// let currentState = GAME_PLAY;
 // let currentState = CREDITS;
 // let currentState = SETTINGS;
 // let currentState = WIN;
@@ -54,8 +54,8 @@ function drawGamePlay() {
   enemyA.draw();
   enemyB.draw();
   clouds.draw()
-  player.sprite.displace(enemyA.group);
-  player.sprite.displace(enemyB.group);
+  player.sprite.overlap(enemyA.group,enemyHitA);
+  player.sprite.overlap(enemyB.group,enemyHitB);
   player.groupA.displace(enemyA.group, playerHitEnemyA);
   player.groupA.displace(enemyB.group, playerHitEnemyB);
   brownDog.group.overlap(enemyA.group, enemyNear);
@@ -142,4 +142,16 @@ function remakeGreyBird() {
   if (gBird.birdNum < 1) {
     gBird.setup(camera.position.x +500, random(200, 250));
   }
+}
+
+function enemyHitA(enemy,student){
+  player.health=player.health-20;
+enemyA.sprite.changeAnimation('attack');
+  student.remove();
+  enemyA.minionANum--;
+}
+function enemyHitB(enemy,student){
+  player.health=player.health-20;
+  student.remove();
+  enemyB.minionBNum--;
 }
