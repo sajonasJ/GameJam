@@ -10,12 +10,14 @@ let points = 0;
 let ground = 650;
 
 ////////////////////////CURRENT SCREEN STATE CONTROL////////////////////////
-// let currentState = MAIN_MENU;
-let currentState = GAME_PLAY;
+let currentState = MAIN_MENU;
+// let currentState = GAME_PLAY;
 // let currentState = CREDITS;
 // let currentState = SETTINGS;
 // let currentState = WIN;
 // let currentState = LOSE;
+// let currentState = BOSSFIGHT;
+
 function preload() {
   assetPreload();
   player.preload();
@@ -54,8 +56,10 @@ function drawGamePlay() {
   enemyA.draw();
   enemyB.draw();
   clouds.draw()
-  player.sprite.overlap(enemyA.group, enemyHitA);
-  player.sprite.overlap(enemyB.group, enemyHitB);
+  // player.sprite.overlap(enemyA.group, enemyHitA);
+  // player.sprite.overlap(enemyB.group, enemyHitB);
+  player.sprite.displace(enemyA.group);
+  player.sprite.displace(enemyB.group);
   player.groupA.displace(enemyA.group, playerHitEnemyA);
   player.groupA.displace(enemyB.group, playerHitEnemyB);
   brownDog.group.overlap(enemyA.group, enemyNear);
@@ -63,7 +67,7 @@ function drawGamePlay() {
   gamePlayButtons();
   drawSprites();
   reSpawner();
-
+  startRun();
 }
 ////////////////////////////////FREE FOR ALL FUNCTIONS//////////////////
 function playerHitEnemyA(punch, enemies) {
@@ -76,7 +80,7 @@ function playerHitEnemyA(punch, enemies) {
   textStyle(BOLD);
   fill('red');
   textAlign(CENTER);
-  text(20 + "!", player.sprite.position.x + 30, player.sprite.position.y - 50);//<<<<<<<<<<<<<<<<<<<<<
+  text(20 + "!", player.sprite.position.x + 30, player.sprite.position.y - 50);
   pop();
   push();
   enemies.hp -= 20;
@@ -159,5 +163,30 @@ function enemyHitB(enemy, student) {
   enemyB.minionBNum--;
   if (player.health <= 0) {
     enemy.remove();
+  }
+}
+
+function startRun() {
+  push();
+  textSize(50);
+  stroke(0);
+  strokeWeight(3);
+  textFont(font);
+  textStyle(BOLD);
+  fill(217, 4, 41);
+  textAlign(CENTER);
+  if (frameCount <= 100) {
+    text("You're late!", camera.position.x, camera.position.y);
+    text("James is waiting!", camera.position.x, camera.position.y + 50);
+  } else if (frameCount<= 200) {
+    textSize(100);
+    text("RUN!!!",camera.position.x , camera.position.y +25);
+  }
+  pop();
+}
+
+function finalCheck(){
+  if (points ===1000){
+    change
   }
 }

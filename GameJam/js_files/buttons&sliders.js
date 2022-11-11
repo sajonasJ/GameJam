@@ -84,7 +84,16 @@ function loseButtons() {//ALL HIDE
   returnButton.hide();
   volumeSlider.hide();
   levelSlider.hide();
-  playButton.hide()
-  creditsButton.hide()
-  settingsButton.hide()
+  playButton.hide();
+  creditsButton.hide();
+  settingsButton.hide();
+}
+
+function bossFightButtons(){
+  returnButton.hide();
+  volumeSlider.hide();
+  levelSlider.hide();
+  playButton.hide();
+  creditsButton.hide();
+  settingsButton.hide();
 }

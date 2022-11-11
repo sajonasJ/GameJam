@@ -4,6 +4,7 @@ const SETTINGS = 2;
 const CREDITS = 3;
 const LOSE = 4;
 const WIN = 5;
+const BOSSFIGHT = 6;
 
 function drawScreens() {
   if (currentState == MAIN_MENU) {
@@ -18,6 +19,8 @@ function drawScreens() {
     drawLose();
   } else if (currentState == WIN) {
     drawWin();
+  } else if (currentState == BOSSFIGHT) {
+    drawBossFight();
   }
 }
 
@@ -25,3 +28,4 @@ function viewCredits() { currentState = CREDITS }
 function viewGame() { currentState = GAME_PLAY }
 function viewSettings() { currentState = SETTINGS }
 function viewMainMenu() { currentState = MAIN_MENU }
+function viewBossScreen() { currentState = BOSSFIGHT }

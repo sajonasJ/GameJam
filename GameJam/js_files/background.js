@@ -32,7 +32,7 @@ function levelBackground() {
   bgSky3 += (scrollingCityDiff * 0.7)
   bgSky4 += (scrollingCityDiff * 0.7)
 
-const LEFTSIDE = 0,RIGHTSIDE=7060;
+  const LEFTSIDE = 0, RIGHTSIDE = 7060;
   for (let i = 0; i < player.groupP.length; i++) {
     let aSpr = player.groupP[i];
     if (aSpr.position.x < LEFTSIDE) {
@@ -54,39 +54,53 @@ const LEFTSIDE = 0,RIGHTSIDE=7060;
 
 }
 
-
 function scoreSystem() {
-  let textOffSetX = camera.position.x - 380, textOffsetY = camera.position.y - 250;
-  let boxOffsetX = camera.position.x - 600, BoxOffsetY = camera.position.y - 340;
-  let healthTextX = camera.position.x - 380, healthTextY = camera.position.y - 310;
+  let textOffSetX, textOffsetY;
+  let boxOffsetX, boxOffsetY;
+  let healthTextX, healthTextY;
 
+  if (currentState == BOSSFIGHT) {
+    textOffSetX = 260, textOffsetY = 105;
+    boxOffsetX = 40, boxOffsetY = 15;
+    healthTextX = 260, healthTextY = 45;
+  } else {
+    textOffSetX = camera.position.x - 380, textOffsetY = camera.position.y - 250;
+    boxOffsetX = camera.position.x - 600, boxOffsetY = camera.position.y - 340;
+    healthTextX = camera.position.x - 380, healthTextY = camera.position.y - 310;
+  }
   //beige rect
   push();
   stroke(0);
   strokeWeight(4);
   fill(233, 196, 106);
-  rect(boxOffsetX - 10, BoxOffsetY - 10, 450, 120);
+  rect(boxOffsetX - 10, boxOffsetY - 10, 450, 120);
   pop();
   // border rect
   push();
   stroke(0);
   strokeWeight(4);
   fill(233, 196, 106);
-  rect(boxOffsetX, BoxOffsetY, 430, 100);
+  rect(boxOffsetX, boxOffsetY, 430, 100);
   pop();
 
 
   //health bar
   push();
-
-  let healthBoxX = camera.position.x - 470, healthBoxY = camera.position.y - 300;
-  let healthBoxW = 200, healthBoxH = 15;
+  let healthBoxX, healthBoxY;
+  let healthBoxW, healthBoxH;
+  if (currentState == BOSSFIGHT) {
+    healthBoxX = 170, healthBoxY = 55;
+    healthBoxW = 200, healthBoxH = 15;
+  } else {
+    healthBoxX = camera.position.x - 470, healthBoxY = camera.position.y - 300;
+    healthBoxW = 200, healthBoxH = 15;
+  }
   griffin.resize(430, 100);
-  image(griffin, boxOffsetX, BoxOffsetY);
+  image(griffin, boxOffsetX, boxOffsetY);
   healthFace.resize(70, 70);
   image(healthFace, healthBoxX, healthBoxY - 25);
   pop();
-  // console.log(healthBoxX)
+
   push();
   stroke(0);
   strokeWeight(4);
@@ -106,11 +120,11 @@ function scoreSystem() {
   stroke(0);
   strokeWeight(4);
   noFill();
-  rect(healthBoxX + 110, healthBoxY, healthBoxW-40, healthBoxH);//rectbox
-  rect(healthBoxX + 130, healthBoxY, healthBoxW-80, healthBoxH);//rectbox
-  rect(healthBoxX + 150, healthBoxY, healthBoxW-120, healthBoxH);//rectbox
-  rect(healthBoxX + 170, healthBoxY, healthBoxW-160, healthBoxH);//rectbox
-  line(healthBoxX +190, healthBoxY,healthBoxX+190,healthBoxY+15);
+  rect(healthBoxX + 110, healthBoxY, healthBoxW - 40, healthBoxH);//rectbox
+  rect(healthBoxX + 130, healthBoxY, healthBoxW - 80, healthBoxH);//rectbox
+  rect(healthBoxX + 150, healthBoxY, healthBoxW - 120, healthBoxH);//rectbox
+  rect(healthBoxX + 170, healthBoxY, healthBoxW - 160, healthBoxH);//rectbox
+  line(healthBoxX + 190, healthBoxY, healthBoxX + 190, healthBoxY + 15);
   pop();
 
   push();
