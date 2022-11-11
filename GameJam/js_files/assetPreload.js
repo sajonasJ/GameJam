@@ -3,6 +3,7 @@ let creditBackground;
 let mainMenuBG;
 let settingsBackground;
 let background1, background2, background3;
+let dontPlay, gamesIMG, with1, with2;
 ////////////////////FONTS////////////////////
 let font;
 ////////////////////BUTTONS////////////////////
@@ -22,6 +23,10 @@ function assetPreload() {
     bgCity = loadImage("assets/images/backgrounds/cityBG.png")
     creditBackground = loadImage("assets/images/backgrounds/creditBackground.jpg");
     settingsBackground = loadImage("assets/images/backgrounds/settingBackground.png");
+    dontPlay = loadImage("assets/images/backgrounds/title1.png");
+    gamesIMG = loadImage("assets/images/backgrounds/title2.png");
+    with1 = loadImage("assets/images/backgrounds/with1.png");
+    with2 = loadImage("assets/images/backgrounds/with2.png");
     ////////////////////FONTS////////////////////
     font = loadFont("fonts/joystix monospace.ttf");
     ////////////////////BUTTONS////////////////////

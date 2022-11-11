@@ -8,7 +8,7 @@ push();
   returnButton.size(100, 100);
   returnButton.hide();
 
-  settingsButton.position(50, 50)
+  settingsButton.position(1200, 650)
   settingsButton.hide();
 
   playButton.position(950, 50)
