@@ -16,7 +16,7 @@ class PlayerManager {
         this.sprite;
         this.groupP;
         this.groupA;
-        this.health = 70;
+        this.health = 80;
         this.maxHealth = 100;
 
     }

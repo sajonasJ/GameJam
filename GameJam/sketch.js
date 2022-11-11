@@ -34,7 +34,7 @@ function setup() {
   enemyB.setup(1300, ground);
   clouds.setup(0, 100);
   blackBird.setup(camera.position.x + 1200, 560);
-  gBird.setup(camera.position.x+1200, 400);
+  gBird.setup(camera.position.x + 1200, 400);
   console.log(gBird);
   buttonManager();
   sliderManager();
@@ -54,8 +54,8 @@ function drawGamePlay() {
   enemyA.draw();
   enemyB.draw();
   clouds.draw()
-  player.sprite.displace(enemyA.group);
-  player.sprite.displace(enemyB.group);
+  player.sprite.overlap(enemyA.group, enemyHitA);
+  player.sprite.overlap(enemyB.group, enemyHitB);
   player.groupA.displace(enemyA.group, playerHitEnemyA);
   player.groupA.displace(enemyB.group, playerHitEnemyB);
   brownDog.group.overlap(enemyA.group, enemyNear);
@@ -140,6 +140,24 @@ function enemyNear() {
 }
 function remakeGreyBird() {
   if (gBird.birdNum < 1) {
-    gBird.setup(camera.position.x +500, random(200, 250));
+    gBird.setup(camera.position.x + 500, random(200, 250));
+  }
+}
+
+function enemyHitA(enemy, student) {
+  player.health = player.health - 20;
+  enemyA.sprite.changeAnimation('attack');
+  student.remove();
+  enemyA.minionANum--;
+  if (player.health <= 0) {
+    enemy.remove();
+  }
+}
+function enemyHitB(enemy, student) {
+  player.health = player.health - 20;
+  student.remove();
+  enemyB.minionBNum--;
+  if (player.health <= 0) {
+    enemy.remove();
   }
 }

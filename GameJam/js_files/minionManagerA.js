@@ -1,4 +1,5 @@
 let enemyWalkSheetA, enemyAnimA;
+let enemyAttackSheetA, enemyAttackA;
 let enemyDieSheetA, enemyDieA;
 class MinionManagerA {
     constructor() {
@@ -12,8 +13,10 @@ class MinionManagerA {
     preload() {
         enemyWalkSheetA = loadSpriteSheet("assets/images/enemy/EnemyA1.png", 100, 100, 4);
         enemyDieSheetA = loadSpriteSheet("assets/images/enemy/EnemyA3.png", 100, 100, 4);
+        enemyAttackSheetA=loadSpriteSheet("assets/images/enemy/EnemyA2.png", 100, 100, 4);
         enemyAnimA = loadAnimation(enemyWalkSheetA);
         enemyDieA = loadAnimation(enemyDieSheetA);
+        enemyAttackA=loadAnimation(enemyAttackSheetA);
         enemyAnimA.frameDelay = 4;
         enemyDieA.frameDelay=4;
     }
@@ -36,6 +39,7 @@ class MinionManagerA {
         minionA.setCollider("rectangle", 0, 0, 50, 50);
         minionA.addAnimation("walk", enemyAnimA);
         minionA.addAnimation("die", enemyDieA);
+        minionA.addAnimation("attack",enemyAttackA);
         minionA.setSpeed(walkSpeed, leftDirection);
         minionA.mass = 10;
         minionA.debug = true;
