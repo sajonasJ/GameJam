@@ -1,4 +1,5 @@
 let enemyWalkSheetB, enemyAnimB;
+let enemyDieSheetB, enemyDieB;
 class MinionManagerB {
     constructor() {
         this.group;
@@ -10,8 +11,11 @@ class MinionManagerB {
 
     preload() {
         enemyWalkSheetB = loadSpriteSheet("assets/images/enemy/enemyB1.png", 100, 100, 4);
+        enemyDieSheetB = loadSpriteSheet("assets/images/enemy/EnemyA3.png", 100, 100, 4);
         enemyAnimB = loadAnimation(enemyWalkSheetB)
+        enemyDieB = loadAnimation(enemyDieSheetB);
         enemyAnimB.frameDelay = 4;
+        enemyDieB.frameDelay=4;
     }
     setup(x, y) {
         this.group = new Group();
@@ -30,13 +34,13 @@ class MinionManagerB {
         let minionB = createSprite(x, y, 50, 50);
         minionB.setCollider("rectangle", 0, 0, 50, 50);
         minionB.addAnimation("walk", enemyAnimB);
+        minionB.addAnimation("die", enemyDieB);
         minionB.setSpeed(walkSpeed, leftDirection);
         minionB.mass = 10;
         minionB.debug = true;
         minionB.maxHp = 100
         minionB.hp = 100
         this.group.add(minionB);
-        this.minionBNum += 1;
         return minionB
     }
     createHealthBar() {
@@ -47,6 +51,7 @@ class MinionManagerB {
             let healthBoxY = this.sprite.position.y - 40;
             let boxWidth = 50, boxHeight = 8;
             //HEALTH MAPPED
+            this.minionBNum += 1;
             noStroke();
             fill(255, 0, 0);
             rect(healthBoxX, healthBoxY,

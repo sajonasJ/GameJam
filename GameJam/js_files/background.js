@@ -32,17 +32,29 @@ function levelBackground() {
   bgSky3 += (scrollingCityDiff * 0.7)
   bgSky4 += (scrollingCityDiff * 0.7)
 
-
-  for (let i = 0; i < allSprites.length; i++) {
-    let aSpr = allSprites[i];
-    if (aSpr.position.x < 100) {
-      aSpr.velocity.x *= 0; aSpr.position.x = 100;
+const LEFTSIDE = 0,RIGHTSIDE=7060;
+  for (let i = 0; i < player.groupP.length; i++) {
+    let aSpr = player.groupP[i];
+    if (aSpr.position.x < LEFTSIDE) {
+      aSpr.velocity.x *= 0; aSpr.position.x = LEFTSIDE;
     }
-    if (aSpr.position.x > 12800) {
-      aSpr.velocity.x *= 0; aSpr.position.x = 1280;
+    if (aSpr.position.x > RIGHTSIDE) {
+      aSpr.velocity.x *= 0; aSpr.position.x = RIGHTSIDE;
     }
   }
+  for (let i = 0; i < brownDog.group.length; i++) {
+    let aSpr = brownDog.group[i];
+    if (aSpr.position.x < LEFTSIDE) {
+      aSpr.velocity.x *= 0; aSpr.position.x = LEFTSIDE;
+    }
+    if (aSpr.position.x > RIGHTSIDE) {
+      aSpr.velocity.x *= 0; aSpr.position.x = RIGHTSIDE;
+    }
+  }
+
 }
+
+
 function scoreSystem() {
   let textOffSetX = camera.position.x - 380, textOffsetY = camera.position.y - 250;
   let boxOffsetX = camera.position.x - 600, BoxOffsetY = camera.position.y - 340;
@@ -74,7 +86,7 @@ function scoreSystem() {
   healthFace.resize(70, 70);
   image(healthFace, healthBoxX, healthBoxY - 25);
   pop();
-  console.log(healthBoxX)
+  // console.log(healthBoxX)
   push();
   stroke(0);
   strokeWeight(4);

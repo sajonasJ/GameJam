@@ -5,6 +5,7 @@ let dogWalkLeftSheet, dogWalkLeft;
 class DogManager {
     constructor() {
         this.sprite;
+        this.group;
     }
     preload() {
         dogWalkSheet = loadSpriteSheet("assets/images/animals/Walk.png", 48, 48, 6);
@@ -21,6 +22,7 @@ class DogManager {
         dogWalkLeft.frameDelay = 4;
     }
     setup(x, y) {
+        this.group = new Group();
         this.x = x;
         this.y = y;
         this.sprite = this.makeDogA(this.x, this.y);
@@ -34,14 +36,17 @@ class DogManager {
         tempDogA.addAnimation("walk", dogWalk);
         tempDogA.addAnimation("walkleft", dogWalkLeft);
         tempDogA.addAnimation("attack", dogAttack);
+        tempDogA.setCollider("rectangle", 50, 0, 80, 100);
         tempDogA.friction = 0.25;
+        tempDogA.debug = true;
+        this.group.add(tempDogA);
         return tempDogA
 
     }
     keyPressed() {
         let left = keyDown(LEFT_ARROW), a = keyDown('a')
         let right = keyDown(RIGHT_ARROW), d = keyDown('d');
-        let space = keyDown(32), ctrl = keyDown(17);
+        let space = keyDown(32), ctrl = keyDown(16);
         // let p = keyDown(80), o = keyDown(79), i = keyDown(73);
         //LOGIC
         if (left || a) {
@@ -58,10 +63,10 @@ class DogManager {
             } else {
                 this.sprite.velocity.x = +5;
             }
-        } else if (space) {
-            this.sprite.changeAnimation("attack")
+       
         } else {
             this.sprite.changeAnimation("idle")
 
         }
-    }}
+    }
+}

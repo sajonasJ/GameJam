@@ -14,8 +14,9 @@ let scrollingCityDiff;
 class PlayerManager {
     constructor() {
         this.sprite;
-        this.group;
-        this.health = 40;
+        this.groupP;
+        this.groupA;
+        this.health = 70;
         this.maxHealth = 100;
 
     }
@@ -31,6 +32,7 @@ class PlayerManager {
         idleAnim.frameDelay = 12;
         pAttackSprite = loadSpriteSheet("assets/images/player/playerAttack.png", 100, 100, 4)
         pAttack = loadAnimation(pAttackSprite);
+        pAttack.looping=false;
         pAttack.frameDelay = 4;
         transform = loadSpriteSheet("assets/images/player/rage.png", 100, 100, 14)
         rage = loadAnimation(transform)
@@ -44,10 +46,11 @@ class PlayerManager {
     }
 
     setup(x, y) {// going to run at setup
+        this.groupP = new Group();
+        this.groupA= new Group();
         this.x = x;
         this.y = y;
         this.sprite = this.makePlayer(this.x, this.y);
-        this.group = new Group();
     }
 
     draw() {// going to run at draw
@@ -71,25 +74,25 @@ class PlayerManager {
         tempPlayer.friction = 0.25;
         tempPlayer.debug = true;
         tempPlayer.mass = 10;
-        // dtempPlayer.debug = true;
+        this.groupP.add(tempPlayer);
         return tempPlayer
     }
     keyPressed() {
         let left = keyDown(LEFT_ARROW), a = keyDown('a')
         let right = keyDown(RIGHT_ARROW), d = keyDown('d');
-        let space = keyDown(32), ctrl = keyDown(17);
+        let space = keyDown(32), shift = keyDown(16);
         let p = keyDown(80), o = keyDown(79), i = keyDown(73);
         //LOGIC
         if (left || a) {
             this.sprite.changeAnimation("runningLeft")
-            if (ctrl) {
+            if (shift) {
                 this.sprite.velocity.x = -10;
             } else {
                 this.sprite.velocity.x = -5;
             }
         } else if (right || d) {
             this.sprite.changeAnimation("running")
-            if (ctrl) {
+            if (shift) {
                 this.sprite.velocity.x = +10;
             } else {
                 this.sprite.velocity.x = +5;
@@ -100,7 +103,8 @@ class PlayerManager {
         } else {
             this.sprite.changeAnimation("idle")
         }
-        if (p) {
+
+        if (frameCount ==200) {
             this.sprite.changeAnimation("transform")
         }
         if (o) {
@@ -109,7 +113,7 @@ class PlayerManager {
         if (i) {
             this.sprite.changeAnimation("transform2")
         }
-
+// console.log(frameCount)
     }
 
     attackSprite() {
@@ -118,7 +122,7 @@ class PlayerManager {
         tempAttack.debug = true;
         tempAttack.life = 5;
         tempAttack.visible = false;
-        this.group.add(tempAttack);
+        this.groupA.add(tempAttack);
         return tempAttack;
     }
 }

@@ -15,8 +15,7 @@ class MinionManagerA {
         enemyAnimA = loadAnimation(enemyWalkSheetA);
         enemyDieA = loadAnimation(enemyDieSheetA);
         enemyAnimA.frameDelay = 4;
-        enemyDieA.frameDelay=100;// not working
-        
+        enemyDieA.frameDelay=4;
     }
     setup(x, y) {
         this.group = new Group();
@@ -27,7 +26,7 @@ class MinionManagerA {
 
     draw() {
         this.createHealthBar();
-        this.dieOff();
+        // this.dieOff();
     }
 
     makeMinionA(x, y) {
@@ -66,9 +65,9 @@ class MinionManagerA {
         }
         pop();
     }
-    dieOff(){
-        if(this.sprite.hp<0){
-            this.sprite.changeAnimation('die');
-        }
-    }
+    // dieOff(){
+    //     if(this.sprite.hp<0){
+    //         this.sprite.changeAnimation('die');
+    //     }
+    // }
 }

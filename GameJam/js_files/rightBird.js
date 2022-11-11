@@ -28,7 +28,7 @@ class RightBirdManager {
         return tempBlack
     }
     makeRightBirdMove() {
-        this.sprite.setSpeed(4, 180);
+        this.sprite.setSpeed(5, 180);
     }
     rightBirdCleanUp() {
         for (let bird of this.group) {
