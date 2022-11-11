@@ -71,6 +71,9 @@ class PlayerManager {
         tempPlayer.addAnimation("transform", rage);
         tempPlayer.addAnimation("transform1", rage1);
         tempPlayer.addAnimation("transform2", rage2);
+        if (currentState == BOSSFIGHT){
+            tempPlayer.scale=4
+        }
         tempPlayer.friction = 0.25;
         tempPlayer.debug = true;
         tempPlayer.mass = 10;

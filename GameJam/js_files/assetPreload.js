@@ -1,5 +1,5 @@
 ////////////////////BACKGROUNDS////////////////////
-let creditBackground;
+let creditBackground,classRoom;
 let mainMenuBG;
 let settingsBackground;
 let background1, background2, background3;
@@ -27,6 +27,7 @@ function assetPreload() {
     gamesIMG = loadImage("assets/images/backgrounds/title2.png");
     with1 = loadImage("assets/images/backgrounds/with1.png");
     with2 = loadImage("assets/images/backgrounds/with2.png");
+    classRoom =loadImage("assets/images/backgrounds/bossClassroom.png");
     ////////////////////FONTS////////////////////
     font = loadFont("fonts/joystix monospace.ttf");
     ////////////////////BUTTONS////////////////////

@@ -10,13 +10,13 @@ let points = 0;
 let ground = 650;
 
 ////////////////////////CURRENT SCREEN STATE CONTROL////////////////////////
-let currentState = MAIN_MENU;
-//let currentState = GAME_PLAY;
+// let currentState = MAIN_MENU;
+// let currentState = GAME_PLAY;
 // let currentState = CREDITS;
 // let currentState = SETTINGS;
 // let currentState = WIN;
 // let currentState = LOSE;
-// let currentState = BOSSFIGHT;
+let currentState = BOSSFIGHT;
 
 function preload() {
   assetPreload();
@@ -31,8 +31,12 @@ function preload() {
 function setup() {
   createCanvas(1280, 720);
   brownDog.setup(120, ground + 35);
-  player.setup(100, ground);
-  enemyA.setup(1800, ground);
+  if (currentState == BOSSFIGHT) {
+    player.setup(100, ground-100);
+  } else {
+    player.setup(100, ground);
+  }
+   enemyA.setup(1800, ground);
   enemyB.setup(1300, ground);
   clouds.setup(0, 100);
   blackBird.setup(camera.position.x + 1200, 560);
@@ -68,6 +72,7 @@ function drawGamePlay() {
   drawSprites();
   reSpawner();
   startRun();
+  finalCheck();
 }
 ////////////////////////////////FREE FOR ALL FUNCTIONS//////////////////
 function playerHitEnemyA(punch, enemies) {
@@ -178,15 +183,15 @@ function startRun() {
   if (frameCount <= 100) {
     text("You're late!", camera.position.x, camera.position.y);
     text("James is waiting!", camera.position.x, camera.position.y + 50);
-  } else if (frameCount<= 200) {
+  } else if (frameCount <= 200) {
     textSize(100);
-    text("RUN!!!",camera.position.x , camera.position.y +25);
+    text("RUN!!!", camera.position.x, camera.position.y + 25);
   }
   pop();
 }
 
-function finalCheck(){
-  if (points ===1000){
-    change
+function finalCheck() {
+  if (points === 1000) {
+    viewBossScreen()
   }
 }

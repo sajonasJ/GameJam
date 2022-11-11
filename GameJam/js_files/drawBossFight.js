@@ -1,6 +1,6 @@
 function drawBossFight() {
     camera.off();
-    image(mainMenuBG, 0, 0);
+    image(classRoom, 0, 0);
     bossFightButtons();
     player.draw();
     clouds.spriteA.remove();
