@@ -32,7 +32,7 @@ class BossManager {
         boss.addAnimation("right", bossRightWalk);
         boss.setSpeed(2,180)
         boss.mass = 10;
-        boss.debug = true;
+        // boss.debug = true;
         boss.maxHp = 10000
         boss.hp = 10000
         boss.scale=7;

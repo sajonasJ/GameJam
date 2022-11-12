@@ -61,7 +61,7 @@ class PlayerManager {
             tempPlayer.scale=4
         }
         tempPlayer.friction = 0.25;
-        tempPlayer.debug = true;
+        // tempPlayer.debug = true;
         tempPlayer.mass = 10;
         this.groupP.add(tempPlayer);
         return tempPlayer
@@ -108,7 +108,7 @@ class PlayerManager {
     attackSprite() {
         let tempAttack = createSprite(this.sprite.position.x + 20, this.sprite.position.y, 60, 100);
         tempAttack.setCollider("rectangle", 0, 0, 50, 100);
-        tempAttack.debug = true;
+        // tempAttack.debug = true;
         tempAttack.life = 5;
         tempAttack.visible = false;
         this.groupA.add(tempAttack);

@@ -38,7 +38,7 @@ class DogManager {
         tempDogA.addAnimation("attack", dogAttack);
         tempDogA.setCollider("rectangle", 50, 0, 80, 100);
         tempDogA.friction = 0.25;
-        tempDogA.debug = true;
+        // tempDogA.debug = true;
         this.group.add(tempDogA);
         return tempDogA
 

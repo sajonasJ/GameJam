@@ -12,9 +12,9 @@ let points = 0;
 let ground = 650;
 
 ////////////////////////CURRENT SCREEN STATE CONTROL////////////////////////
-// let currentState = MAIN_MENU;
+let currentState = MAIN_MENU;
 // let currentState = GAME_PLAY;
-let currentState = CREDITS;
+// let currentState = CREDITS;
 // let currentState = SETTINGS;
 // let currentState = WIN;
 // let currentState = LOSE;
@@ -34,12 +34,13 @@ function preload() {
 }
 function setup() {
   createCanvas(1280, 720);
-  brownDog.setup(120, ground + 35);
+ 
   if (currentState == BOSSFIGHT) {
     boss.setup(1200, ground - 150);
   } else {
     boss.setup(1200, ground + 1000);
   }
+  brownDog.setup(120, ground + 35);
   player.setup(100, ground);
   enemyA.setup(1800, ground);
   enemyB.setup(1300, ground);

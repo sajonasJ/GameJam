@@ -43,7 +43,7 @@ class MinionManagerB {
         minionB.addAnimation("attack",enemyAttackB);
         minionB.setSpeed(walkSpeed, leftDirection);
         minionB.mass = 10;
-        minionB.debug = true;
+        // minionB.debug = true;
         minionB.maxHp = 100
         minionB.hp = 100
         this.group.add(minionB);
