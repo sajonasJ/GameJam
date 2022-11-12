@@ -11,12 +11,12 @@ let ground = 650;
 
 ////////////////////////CURRENT SCREEN STATE CONTROL////////////////////////
 // let currentState = MAIN_MENU;
-// let currentState = GAME_PLAY;
+let currentState = GAME_PLAY;
 // let currentState = CREDITS;
 // let currentState = SETTINGS;
 // let currentState = WIN;
 // let currentState = LOSE;
-let currentState = BOSSFIGHT;
+// let currentState = BOSSFIGHT;
 
 function preload() {
   assetPreload();
@@ -32,16 +32,17 @@ function setup() {
   createCanvas(1280, 720);
   brownDog.setup(120, ground + 35);
   if (currentState == BOSSFIGHT) {
-    player.setup(100, ground-100);
+    player.setup(100, ground - 100);
   } else {
     player.setup(100, ground);
   }
-   enemyA.setup(1800, ground);
+  if (currentState == GAME_PLAY){
+  enemyA.setup(1800, ground);
   enemyB.setup(1300, ground);
   clouds.setup(0, 100);
   blackBird.setup(camera.position.x + 1200, 560);
   gBird.setup(camera.position.x + 1200, 400);
-  console.log(gBird);
+  }
   buttonManager();
   sliderManager();
 }
@@ -109,7 +110,7 @@ function playerHitEnemyB(punch, enemies) {
   text(20 + "!", player.sprite.position.x + 30, player.sprite.position.y - 50);//<<<<<<<<<<<<<<<<<<<<<
   pop();
   push();
-  enemies.hp -= 20;
+  enemies.hp = enemies.hp - 20;
   if (enemies.hp < 1) {
     enemies.remove();
     enemyB.minionBNum--;
@@ -134,7 +135,6 @@ function remakeEnemyA() {
 function remakeEnemyB() {
   if (enemyB.minionBNum <= 1) {
     enemyB.makeMinionB(camera.position.x + 800, ground);
-    enemyB.minionBNum++;
   }
 }
 
@@ -163,7 +163,7 @@ function enemyHitA(enemy, student) {
   }
 }
 function enemyHitB(enemy, student) {
-  player.health = player.health - 20;
+  player.hp = player.hp - 20;
   student.remove();
   enemyB.minionBNum--;
   if (player.health <= 0) {
@@ -193,5 +193,29 @@ function startRun() {
 function finalCheck() {
   if (points === 1000) {
     viewBossScreen()
+    clearCanvass()
   }
+}
+function clearCanvass() {
+  for (let i = 0; i < allSprites.length; i++) {
+    allSprites[i].remove();
+    clouds.spriteA.remove();
+    clouds.spriteB.remove();
+    clouds.spriteC.remove();
+    brownDog.sprite.remove();
+    enemyA.sprite.remove();
+    enemyB.sprite.remove();
+    blackBird.sprite.remove();
+    gBird.sprite.remove();
+  }
+  player.setup(100, ground-100);
+
+}
+
+function playerLose(){
+
+}
+
+function playerWin(){
+
 }

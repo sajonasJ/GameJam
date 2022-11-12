@@ -4,8 +4,8 @@ let enemyDieSheetA, enemyDieA;
 class MinionManagerA {
     constructor() {
         this.group;
-        this.health = 60;
-        this.maxHealth = 100;
+        this.hp;
+        this.maxHp;
         this.sprite;
         this.minionANum = 0;
     }
@@ -29,7 +29,6 @@ class MinionManagerA {
 
     draw() {
         this.createHealthBar();
-        // this.dieOff();
     }
 
     makeMinionA(x, y) {
@@ -69,9 +68,4 @@ class MinionManagerA {
         }
         pop();
     }
-    // dieOff(){
-    //     if(this.sprite.hp<0){
-    //         this.sprite.changeAnimation('die');
-    //     }
-    // }
 }

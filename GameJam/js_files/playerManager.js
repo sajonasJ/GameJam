@@ -32,7 +32,7 @@ class PlayerManager {
         idleAnim.frameDelay = 12;
         pAttackSprite = loadSpriteSheet("assets/images/player/playerAttack.png", 100, 100, 4)
         pAttack = loadAnimation(pAttackSprite);
-        pAttack.looping=false;
+        pAttack.looping=true;
         pAttack.frameDelay = 4;
         transform = loadSpriteSheet("assets/images/player/rage.png", 100, 100, 14)
         rage = loadAnimation(transform)
@@ -84,7 +84,7 @@ class PlayerManager {
         let left = keyDown(LEFT_ARROW), a = keyDown('a')
         let right = keyDown(RIGHT_ARROW), d = keyDown('d');
         let space = keyDown(32), shift = keyDown(16);
-        let p = keyDown(80), o = keyDown(79), i = keyDown(73);
+        // let p = keyDown(80), o = keyDown(79), i = keyDown(73);
         //LOGIC
         if (left || a) {
             this.sprite.changeAnimation("runningLeft")
@@ -107,15 +107,15 @@ class PlayerManager {
             this.sprite.changeAnimation("idle")
         }
 
-        if (frameCount ==200) {
-            this.sprite.changeAnimation("transform")
-        }
-        if (o) {
-            this.sprite.changeAnimation("transform1")
-        }
-        if (i) {
-            this.sprite.changeAnimation("transform2")
-        }
+        // if (frameCount ==200) {
+        //     this.sprite.changeAnimation("transform")
+        // }
+        // if (o) {
+        //     this.sprite.changeAnimation("transform1")
+        // }
+        // if (i) {
+        //     this.sprite.changeAnimation("transform2")
+        // }
 // console.log(frameCount)
     }
 
