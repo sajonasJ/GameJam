@@ -34,6 +34,7 @@ class CloudManager {
         let tempCloudA = createSprite(x, y);
         tempCloudA.scale = 3;
         tempCloudA.addImage("idle", clouds1);
+        tempCloudA.life=600;
         this.group.add(tempCloudA);
         this.cloudNum++;
         return tempCloudA;
@@ -43,6 +44,7 @@ class CloudManager {
         let tempCloudB = createSprite(x, y);
         tempCloudB.scale = 3;
         tempCloudB.addImage("idle", clouds2);
+        tempCloudB.life=600;
         this.group.add(tempCloudB);
         this.cloudNum++;
         return tempCloudB;
@@ -52,6 +54,7 @@ class CloudManager {
         let tempCloudC = createSprite(x, y);
         tempCloudC.scale = 3;
         tempCloudC.addImage("idle", clouds3);
+        tempCloudC.life=600;
         this.group.add(tempCloudC);
         this.cloudNum++;
         return tempCloudC;

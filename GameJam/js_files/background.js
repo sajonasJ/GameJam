@@ -150,6 +150,6 @@ function scoreSystem() {
 
 function remakeClouds() {
   if (clouds.cloudNum <= 6) {
-    clouds.setup(camera.position.x + 400, random(100, 250));
+    clouds.setup(camera.position.x + 1000, random(100, 250));
   }
 }

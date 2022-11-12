@@ -26,7 +26,7 @@ class MinionManagerB {
         this.group = new Group();
         this.x = x;
         this.y = y;
-        this.sprite = this.makeMinionB(this.x, this.y);
+        this.group.add(this.makeMinionB(this.x, this.y));
     }
 
     draw() {
@@ -39,7 +39,7 @@ class MinionManagerB {
         let minionB = createSprite(x, y);
         minionB.setCollider("rectangle", 0, 0, 50, 50);
         minionB.addAnimation("walk", enemyAnimB);
-        minionB.addAnimation("die", enemyDieB);
+        // minionB.addAnimation("die", enemyDieB);
         minionB.addAnimation("attack",enemyAttackB);
         minionB.setSpeed(walkSpeed, leftDirection);
         minionB.mass = 10;

@@ -6,6 +6,7 @@ let clouds = new CloudManager();
 let brownDog = new DogManager();
 let blackBird = new RightBirdManager();
 let gBird = new GreyBirdManager();
+let boss = new BossManager();
 let points = 0;
 let ground = 650;
 
@@ -36,12 +37,12 @@ function setup() {
   } else {
     player.setup(100, ground);
   }
-  if (currentState == GAME_PLAY){
-  enemyA.setup(1800, ground);
-  enemyB.setup(1300, ground);
-  clouds.setup(0, 100);
-  blackBird.setup(camera.position.x + 1200, 560);
-  gBird.setup(camera.position.x + 1200, 400);
+  if (currentState == GAME_PLAY) {
+    enemyA.setup(1800, ground);
+    enemyB.setup(1300, ground);
+    clouds.setup(0, 100);
+    blackBird.setup(camera.position.x + 1200, 560);
+    gBird.setup(camera.position.x + 1200, 400);
   }
   buttonManager();
   sliderManager();
@@ -61,8 +62,8 @@ function drawGamePlay() {
   enemyA.draw();
   enemyB.draw();
   clouds.draw()
-  // player.sprite.overlap(enemyA.group, enemyHitA);
-  // player.sprite.overlap(enemyB.group, enemyHitB);
+  player.sprite.overlap(enemyA.group, enemyHitA);
+  player.sprite.overlap(enemyB.group, enemyHitB);
   player.sprite.displace(enemyA.group);
   player.sprite.displace(enemyB.group);
   player.groupA.displace(enemyA.group, playerHitEnemyA);
@@ -72,7 +73,7 @@ function drawGamePlay() {
   gamePlayButtons();
   drawSprites();
   reSpawner();
-  startRun();
+  // startRun();
   finalCheck();
 }
 ////////////////////////////////FREE FOR ALL FUNCTIONS//////////////////
@@ -93,7 +94,7 @@ function playerHitEnemyA(punch, enemies) {
   if (enemies.hp < 1) {
     enemies.remove();
     enemyA.minionANum--;
-    enemyA.sprite.changeAnimation('die');
+    // enemyA.sprite.changeAnimation('die');
   }
   pop();
 }
@@ -114,7 +115,7 @@ function playerHitEnemyB(punch, enemies) {
   if (enemies.hp < 1) {
     enemies.remove();
     enemyB.minionBNum--;
-    enemyB.sprite.changeAnimation('die');
+    // enemyB.sprite.changeAnimation('die');
   }
   pop();
 }
@@ -155,7 +156,7 @@ function remakeGreyBird() {
 
 function enemyHitA(enemy, student) {
   player.health = player.health - 20;
-  enemyA.sprite.changeAnimation('attack');
+  // enemyA.sprite.changeAnimation('attack');
   student.remove();
   enemyA.minionANum--;
   if (player.health <= 0) {
@@ -163,7 +164,7 @@ function enemyHitA(enemy, student) {
   }
 }
 function enemyHitB(enemy, student) {
-  player.hp = player.hp - 20;
+  player.health = player.health - 20;
   student.remove();
   enemyB.minionBNum--;
   if (player.health <= 0) {
@@ -171,24 +172,24 @@ function enemyHitB(enemy, student) {
   }
 }
 
-function startRun() {
-  push();
-  textSize(50);
-  stroke(0);
-  strokeWeight(3);
-  textFont(font);
-  textStyle(BOLD);
-  fill(217, 4, 41);
-  textAlign(CENTER);
-  if (frameCount <= 100) {
-    text("You're late!", camera.position.x, camera.position.y);
-    text("James is waiting!", camera.position.x, camera.position.y + 50);
-  } else if (frameCount <= 200) {
-    textSize(100);
-    text("RUN!!!", camera.position.x, camera.position.y + 25);
-  }
-  pop();
-}
+// function startRun() {
+//   push();
+//   textSize(50);
+//   stroke(0);
+//   strokeWeight(3);
+//   textFont(font);
+//   textStyle(BOLD);
+//   fill(217, 4, 41);
+//   textAlign(CENTER);
+//   if (frameCount <= 100) {
+//     text("You're late!", camera.position.x, camera.position.y);
+//     text("James is waiting!", camera.position.x, camera.position.y + 50);
+//   } else if (frameCount <= 200) {
+//     textSize(100);
+//     text("RUN!!!", camera.position.x, camera.position.y + 25);
+//   }
+//   pop();
+// }
 
 function finalCheck() {
   if (points === 1000) {
@@ -198,24 +199,26 @@ function finalCheck() {
 }
 function clearCanvass() {
   for (let i = 0; i < allSprites.length; i++) {
+    console.log(allSprites[i])
     allSprites[i].remove();
     clouds.spriteA.remove();
     clouds.spriteB.remove();
     clouds.spriteC.remove();
     brownDog.sprite.remove();
-    enemyA.sprite.remove();
-    enemyB.sprite.remove();
+    enemyA.group.removeSprites();
+    enemyB.group.removeSprites();
     blackBird.sprite.remove();
     gBird.sprite.remove();
+    player.sprite.remove();
   }
-  player.setup(100, ground-100);
+  player.setup(100, ground - 100);
 
 }
 
-function playerLose(){
+function playerLose() {
 
 }
 
-function playerWin(){
+function playerWin() {
 
 }

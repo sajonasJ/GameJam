@@ -30,7 +30,7 @@ class PlayerManager {
         idleSpriteSheet = loadSpriteSheet("assets/images/player/idle1400.png", 100, 100, 7)
         idleAnim = loadAnimation(idleSpriteSheet)
         idleAnim.frameDelay = 12;
-        pAttackSprite = loadSpriteSheet("assets/images/player/playerAttack.png", 100, 100, 4)
+        pAttackSprite = loadSpriteSheet("assets/images/player/playerAttack.png", 100, 80, 4)
         pAttack = loadAnimation(pAttackSprite);
         pAttack.looping=true;
         pAttack.frameDelay = 4;
