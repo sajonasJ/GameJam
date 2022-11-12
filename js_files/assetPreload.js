@@ -35,7 +35,7 @@ function assetPreload() {
     settingsButton = createImg("assets/images/buttons/settingsCog.png")
     returnButton = createImg("assets/images/buttons/returnButtonIMG.png")
     creditsButton = createImg("assets/images/buttons/creditsButton.png")
-    playButtonIMG = loadImage("assets/images/buttons/playbutton.png.png");
+    // playButtonIMG = loadImage("assets/images/buttons/playbutton.png.png");
     creditsButtonIMG = loadImage("assets/images/buttons/creditsButton.png");
     ////////////////////OTHERS////////////////////
     griffin = loadImage("assets/images/buttons/pixelator.png");
