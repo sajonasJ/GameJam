@@ -21,8 +21,8 @@ function assetPreload() {
     background2 = loadImage("assets/images/backgrounds/secondBG.png")
     background3 = loadImage("assets/images/backgrounds/thirdBG.png")
     bgCity = loadImage("assets/images/backgrounds/cityBG.png")
-    creditBackground = loadImage("assets/images/backgrounds/creditBackground.jpg");
-    settingsBackground = loadImage("assets/images/backgrounds/settingBackground.png");
+    creditBackground = loadImage("assets/images/backgrounds/creditbackground.jpg");
+    settingsBackground = loadImage("assets/images/backgrounds/settingbackground.png");
     dontPlay = loadImage("assets/images/backgrounds/title1.png");
     gamesIMG = loadImage("assets/images/backgrounds/title2.png");
     with1 = loadImage("assets/images/backgrounds/with1.png");

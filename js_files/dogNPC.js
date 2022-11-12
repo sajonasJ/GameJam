@@ -6,7 +6,7 @@ class dogNPCManager {
         this.blackDogN = 0;
     }
     preload() {
-        blackDogSheet = loadSpriteSheet("assets/images/animals/walk1.png", 48, 48, 6)
+        blackDogSheet = loadSpriteSheet("assets/images/animals/Walk1.png", 48, 48, 6)
         blackDogIMG = (blackDogSheet);
         blackDogIMG.frameDelay = 4;
     }

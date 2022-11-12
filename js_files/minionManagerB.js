@@ -12,8 +12,8 @@ class MinionManagerB {
 
     preload() {
         enemyWalkSheetB = loadSpriteSheet("assets/images/enemy/enemyB1.png", 100, 100, 4);
-        enemyDieSheetB = loadSpriteSheet("assets/images/enemy/EnemyB3.png", 100, 100, 4);
-        enemyAttackSheetB=loadSpriteSheet("assets/images/enemy/EnemyB2.png", 100, 100, 4);
+        enemyDieSheetB = loadSpriteSheet("assets/images/enemy/enemyB3.png", 100, 100, 4);
+        enemyAttackSheetB=loadSpriteSheet("assets/images/enemy/enemyB2.png", 100, 100, 4);
         enemyAnimB = loadAnimation(enemyWalkSheetB)
         enemyDieB = loadAnimation(enemyDieSheetB);
         enemyAttackB=loadAnimation(enemyAttackSheetB);
