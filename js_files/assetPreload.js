@@ -31,7 +31,7 @@ function assetPreload() {
     ////////////////////FONTS////////////////////
     font = loadFont("fonts/joystix monospace.ttf");
     ////////////////////BUTTONS////////////////////
-    playButton = createImg("assets/images/buttons/playButton.png.png")
+    playButton = createImg("assets/images/buttons/playButton.png")
     settingsButton = createImg("assets/images/buttons/settingsCog.png")
     returnButton = createImg("assets/images/buttons/returnButtonIMG.png")
     creditsButton = createImg("assets/images/buttons/creditsButton.png")
