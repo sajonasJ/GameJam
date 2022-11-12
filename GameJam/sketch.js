@@ -7,6 +7,7 @@ let brownDog = new DogManager();
 let blackBird = new RightBirdManager();
 let gBird = new GreyBirdManager();
 let boss = new BossManager();
+let blackDog = new dogNPCManager();
 let points = 0;
 let ground = 650;
 
@@ -28,6 +29,7 @@ function preload() {
   brownDog.preload();
   blackBird.preload();
   gBird.preload();
+  blackDog.preload();
 }
 function setup() {
   createCanvas(1280, 720);
@@ -43,6 +45,7 @@ function setup() {
     clouds.setup(0, 100);
     blackBird.setup(camera.position.x + 1200, 560);
     gBird.setup(camera.position.x + 1200, 400);
+    blackDog.setup(0,ground);
   }
   buttonManager();
   sliderManager();
@@ -56,6 +59,7 @@ function drawGamePlay() {
   levelBackground();
   scoreSystem();
   brownDog.draw();
+  blackDog.draw();
   blackBird.draw();
   gBird.draw();
   player.draw();
@@ -73,6 +77,7 @@ function drawGamePlay() {
   gamePlayButtons();
   drawSprites();
   reSpawner();
+
   // startRun();
   finalCheck();
 }
