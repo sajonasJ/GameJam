@@ -6,9 +6,6 @@ var runningLeftSpriteSheet;
 var runningLeftAnim;
 let pAttack;
 let pAttackSprite;
-let transform, rage;
-let rage1, rageSpr1;
-let rage2, rageSpr2;
 let scrollingCityDiff;
 
 class PlayerManager {
@@ -34,15 +31,6 @@ class PlayerManager {
         pAttack = loadAnimation(pAttackSprite);
         pAttack.looping=true;
         pAttack.frameDelay = 4;
-        transform = loadSpriteSheet("assets/images/player/rage.png", 100, 100, 14)
-        rage = loadAnimation(transform)
-        rageSpr1 = loadSpriteSheet("assets/images/player/rage1.png", 80, 100, 6)//o
-        rage1 = loadAnimation(rageSpr1)
-        rageSpr2 = loadSpriteSheet("assets/images/player/rage2.png", 80, 100, 6)//i
-        rage2 = loadAnimation(rageSpr2)
-        rage.frameDelay = 4;
-        rage1.frameDelay = 4;
-        rage2.frameDelay = 4;
     }
 
     setup(x, y) {// going to run at setup
@@ -68,9 +56,7 @@ class PlayerManager {
         tempPlayer.addAnimation("running", runningAnim)
         tempPlayer.addAnimation("runningLeft", runningLeftAnim)
         tempPlayer.addAnimation("attack", pAttack);
-        tempPlayer.addAnimation("transform", rage);
-        tempPlayer.addAnimation("transform1", rage1);
-        tempPlayer.addAnimation("transform2", rage2);
+        
         if (currentState == BOSSFIGHT){
             tempPlayer.scale=4
         }

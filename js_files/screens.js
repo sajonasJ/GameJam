@@ -24,8 +24,12 @@ function drawScreens() {
   }
 }
 
-function viewCredits() { currentState = CREDITS }
-function viewGame() { currentState = GAME_PLAY }
+function viewCredits() { currentState = CREDITS}
+function viewGame() { currentState = GAME_PLAY; 
+  frameCount=0;}
 function viewSettings() { currentState = SETTINGS }
 function viewMainMenu() { currentState = MAIN_MENU }
-function viewBossScreen() { currentState = BOSSFIGHT }
+function viewBossScreen() { currentState = BOSSFIGHT;
+  frameCount=0; }
+function viewLose() { currentState = LOSE }
+function viewWin(){currentState=WIN}

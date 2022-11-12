@@ -1,3 +1,6 @@
 function drawLose() {
-    background(155);
-  }
+  camera.off();
+  push();
+  image(Ulose, 0, 0);
+  pop();
+}

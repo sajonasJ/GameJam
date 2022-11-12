@@ -1,43 +1,46 @@
-class BossManager{
-    constructor(){
+let bossLeftSheet, bossLeftWalk;
+let bossRightSheet, bossRightWalk;
+class BossManager {
+    constructor() {
         this.sprite;
         this.hp;
         this.maxHp;
+        this.group;
     }
-    preload(){
-        transform = loadSpriteSheet("assets/images/player/rage.png", 100, 100, 14)
-        rage = loadAnimation(transform)
-        rageSpr1 = loadSpriteSheet("assets/images/player/rage1.png", 80, 100, 6)//o
-        rage1 = loadAnimation(rageSpr1)
-        rageSpr2 = loadSpriteSheet("assets/images/player/rage2.png", 80, 100, 6)//i
-        rage2 = loadAnimation(rageSpr2)
-        rage.frameDelay = 4;
-        rage1.frameDelay = 4;
-        rage2.frameDelay = 4;
+    preload() {
+        bossLeftSheet = loadSpriteSheet("assets/images/enemy/bwleft.png", 40, 50, 6)
+        bossLeftWalk = loadAnimation(bossLeftSheet)
+        bossRightSheet = loadSpriteSheet("assets/images/enemy/bwright.png", 40, 50, 6)
+        bossRightWalk = loadAnimation(bossRightSheet)
+        bossLeftWalk.frameDelay =6;
+        bossRightSheet.frameDelay = 6;
     }
-    setup(x,y){
+    setup(x, y) {
+        this.group = new Group();
+        this.x = x;
+        this.y = y;
+        this.sprite= this.makeBoss(this.x, this.y);
+    }
+    draw() {
+        this.createHealthBar(); 
+    }
+    makeBoss(x, y) {
 
-    }
-    draw(){
-
-    }
-    makeBoss(x,y){
-        let walkSpeed = 2;
-        let leftDirection = 180;
         let boss = createSprite(x, y);
         boss.setCollider("rectangle", 0, 0, 50, 50);
-        tempPlayer.addAnimation("transform", rage);
-        tempPlayer.addAnimation("transform1", rage1);
-        tempPlayer.addAnimation("transform2", rage2);
+        boss.addAnimation("left", bossLeftWalk);
+        boss.addAnimation("right", bossRightWalk);
+        boss.setSpeed(2,180)
         boss.mass = 10;
         boss.debug = true;
-        boss.maxHp = 100
-        boss.hp = 100
+        boss.maxHp = 10000
+        boss.hp = 10000
+        boss.scale=7;
         this.group.add(boss);
         this.bossNum += 1;
         return boss
     }
-    createHealthBar(){
+    createHealthBar() {
         push();
         //tracker hp.box
         for (let enemy of this.group) {

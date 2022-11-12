@@ -1,3 +1,6 @@
 function drawWin() {
-    background(155);
+  camera.off();
+  push();
+  image(Uwin, 0, 0);
+  pop();
   }

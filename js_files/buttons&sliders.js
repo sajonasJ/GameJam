@@ -3,16 +3,24 @@ function buttonManager() {
 push();
   creditsButton.position(950, 150)
   creditsButton.hide();
+  creditsButton.mouseOver(over);
+  creditsButton.mouseOut(out);
 
   returnButton.position(1120, 40);
   returnButton.size(100, 100);
   returnButton.hide();
+  returnButton.mouseOver(over);
+  returnButton.mouseOut(out);
 
   settingsButton.position(1200, 650)
   settingsButton.hide();
+  settingsButton.mouseOver(over);
+  settingsButton.mouseOut(out);
 
   playButton.position(950, 50)
   playButton.hide();
+  playButton.mouseOver(over);
+  playButton.mouseOut(out);
   pop();
 }
 
@@ -96,4 +104,25 @@ function bossFightButtons(){
   playButton.hide();
   creditsButton.hide();
   settingsButton.hide();
+}
+function over() {
+  buttonSound.play()
+  this.style('transform:scale(1.2,1.2)');
+  this.style('transition:( 0.03)');
+}
+function out() {
+  this.style('transform:none');
+}
+
+function gameMusic(){
+  gameSound.setVolume(0.3);
+  gameSound.play();
+  gameSound.setLoop(false);
+    userStartAudio();
+}
+function finalMusic(){
+  finalSound.setVolume(0.3);
+  finalSound.play();
+  finalSound.setLoop(false);
+    userStartAudio();
 }

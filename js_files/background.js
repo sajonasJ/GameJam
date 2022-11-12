@@ -34,21 +34,21 @@ function levelBackground() {
 
   const LEFTSIDE = 0, RIGHTSIDE = 7060;
   for (let i = 0; i < player.groupP.length; i++) {
-    let aSpr = player.groupP[i];
-    if (aSpr.position.x < LEFTSIDE) {
-      aSpr.velocity.x *= 0; aSpr.position.x = LEFTSIDE;
+    let spritez = player.groupP[i];
+    if (spritez.position.x < LEFTSIDE) {
+      spritez.velocity.x *= 0; spritez.position.x = LEFTSIDE;
     }
-    if (aSpr.position.x > RIGHTSIDE) {
-      aSpr.velocity.x *= 0; aSpr.position.x = RIGHTSIDE;
+    if (spritez.position.x > RIGHTSIDE) {
+      spritez.velocity.x *= 0; spritez.position.x = RIGHTSIDE;
     }
   }
   for (let i = 0; i < brownDog.group.length; i++) {
-    let aSpr = brownDog.group[i];
-    if (aSpr.position.x < LEFTSIDE) {
-      aSpr.velocity.x *= 0; aSpr.position.x = LEFTSIDE;
+    let spritez = brownDog.group[i];
+    if (spritez.position.x < LEFTSIDE) {
+      spritez.velocity.x *= 0; spritez.position.x = LEFTSIDE;
     }
-    if (aSpr.position.x > RIGHTSIDE) {
-      aSpr.velocity.x *= 0; aSpr.position.x = RIGHTSIDE;
+    if (spritez.position.x > RIGHTSIDE) {
+      spritez.velocity.x *= 0; spritez.position.x = RIGHTSIDE;
     }
   }
 
@@ -151,5 +151,14 @@ function scoreSystem() {
 function remakeClouds() {
   if (clouds.cloudNum <= 6) {
     clouds.setup(camera.position.x + 1000, random(100, 250));
+  }
+}
+
+function spriteWalls() {
+  for (let spritez of allSprites) {
+    if (spritez.position.x < 0) { spritez.velocity.x *= -1; spritez.position.x = 0; }
+    if (spritez.position.x > width) { spritez.velocity.x *= -1; spritez.position.x = width; }
+    if (spritez.position.y < 0) { spritez.velocity.y *= -1; spritez.position.y = 0; }
+    if (spritez.position.y > height - 90) { spritez.velocity.y *= -1; spritez.position.y = height - 90; }
   }
 }
