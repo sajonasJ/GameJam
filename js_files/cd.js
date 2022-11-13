@@ -89,7 +89,7 @@ function playerHitEnemyA(punch, enemies) {
     enemyA.minionANum--;
     if (player.health <= 0) {
       enemy.remove();
-      currentState == LOSE;
+      viewLose();
     }
   }
   function enemyHitB(enemy, student) {
